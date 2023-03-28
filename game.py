@@ -49,6 +49,12 @@ class Cloack(Armor):
         self.defence = defence
         self.skill = skill
 
+class Helmet(Armor):
+    def __init__(self, name, defence=5, skill="Helmet"):
+        self.name = name
+        self.defence = defence
+        self.skill = skill
+
 class Magician(Character):
     def __init__(self, name, health, weapon, armor=None):
         super().__init__(name, health)
@@ -77,10 +83,10 @@ class Magician(Character):
             if armor.skill == "Shield":
                 self.defence_points += (armor.defence - self.distraction)
                 # wrong armor can take til 50% from defence_points
-            if armor.skill == "Cloak":
+            elif armor.skill == "Cloak":
                 self.defence_points += (armor.defence - self.distraction + 5)
                 # a proper armor can add til 50% from defence_points
-            if armor.skill == "Helmet":
+            elif armor.skill == "Helmet":
                 self.defence_points += (armor.defence - self.distraction - 5)
                 # wrong armor can take til 50% from defence_points
         return self.defence_points
