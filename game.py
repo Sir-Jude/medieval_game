@@ -132,7 +132,7 @@ class Warrior(Character):
         return self.defence_points
             
     def get_info(self):
-<<<<<<< HEAD
+
         return f"Name: {self.name}, the Great\nHealth: {self.health}\nDamage: {((self.weapon).damage)}"
         
 
@@ -172,8 +172,6 @@ class Archer(Character):
                 self.defence_points += (armor.defence - self.distraction - 3)
                 # wrong armor can take til 50% from defence_points
         return self.defence_points    
-=======
-        return f"Name: {self.name}, the Mage\nHealth: {self.health}\nDamage: {((self.weapon).damage)}"
     
 # So as we are have 5 characters we need to replace numbers with values
 class Sword(Weapon):
@@ -243,4 +241,3 @@ class Axe(Weapon):
         elif hit == 3 or hit == 4 or hit == 5:
             self.damage = random.randint(35,70)
         
->>>>>>> 78eb20fc13f0e40acd6fcfa5999593d06d35f3fc
