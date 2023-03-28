@@ -43,6 +43,12 @@ class Armor(ABC):
         self.name = name
         self.defence = defence
 
+class Cloack(Armor):
+    def __init__(self, name, defence=10, skill="Cloack"):
+        self.name = name
+        self.defence = defence
+        self.skill = skill
+
 class Magician(Character):
     def __init__(self, name, health, weapon, armor=None):
         super().__init__(name, health)
@@ -92,22 +98,32 @@ class Warrior(Character):
         self.armor = armor
         
     def attack(self, weapon):
-        if  weapon.skill == "Spell":
-            self.attack_points += 0
-        elif weapon.skill == "Sword":
-            self.attack_points += 10
-        elif weapon.skill == "Bow":
-            self.attack_points -= 5 
+        self.distraction = int(random(0,11)) # distraction can take til 100% from attack_points
+        if weapon:
+            if weapon.skill == "Spell":
+                self.attack_points += (weapon.damage - self.distraction - 5)
+                # wrong weapon can take til 50% from attack_points
+            elif weapon.skill == "Sword":
+                self.attack_points += (weapon.damage - self.distraction + 5)
+                # a proper weapon can add til 50% from attack_points
+            elif weapon.skill == "Bow":
+                self.attack_points -= (weapon.damage - self.distraction)
+                # wrong weapon can take til 50% from attack_points
+        return self.attack_points
         
     def defend(self, armor):
+        self.distraction = int(random(0,11)) # distraction can take til 100% from defence_points
         if armor:
             if armor == "Shield":
-                self.defence_points += 10
+                self.defence_points += (armor.defence - self.distraction - 5)
+                # wrong armor can take til 50% from defence_points
             if armor == "Cloak":
-                self.defence_points -= 3
+                self.defence_points += (armor.defence - self.distraction - 5)
+                # wrong armor can take til 50% from defence_points
             if armor == "Helmet":
-                self.defence_points += 5
-        return 0
+                self.defence_points += (armor.defence - self.distraction)
+                # wrong armor can take til 50% from defence_points
+        return self.defence_points
             
     def get_info(self):
         return f"Name: {self.name}, the Mage\nHealth: {self.health}\nDamage: {((self.weapon).damage)}"
