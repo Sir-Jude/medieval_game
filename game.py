@@ -43,6 +43,12 @@ class Armor(ABC):
         self.name = name
         self.defence = defence
 
+class Cloack(Armor):
+    def __init__(self, name, defence=10, skill="Cloack"):
+        self.name = name
+        self.defence = defence
+        self.skill = skill
+
 class Magician(Character):
     def __init__(self, name, health, weapon, armor=None):
         super().__init__(name, health)
