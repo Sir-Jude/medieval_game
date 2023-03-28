@@ -130,7 +130,7 @@ class Warrior(Character):
     
 # So as we are have 5 characters we need to replace numbers with values
 class Sword(Weapon):
-    def __init__(self, name, damage, skill):
+    def __init__(self, name, damage, skill="Sword"):
         super().__init__(name)
         self.name = name
         self.damage = damage
@@ -143,10 +143,10 @@ class Sword(Weapon):
             self.damage = random.randint(19,45)
 
 class Bow(Weapon):
-    def __init__(self, name, damage, skill):
+    def __init__(self, name, damage=random.randint(60,70), skill="Bow"):
         super().__init__(name)
         self.name = name
-        self.damage = damage + random.randint(60,70)
+        self.damage = damage
         skill = skill
 
     def aim(self, hit):
@@ -156,7 +156,7 @@ class Bow(Weapon):
             self.damage = random.randint(50,65)
 
 class Stick(Weapon):
-    def __init__(self, name, damage, skill):
+    def __init__(self, name, damage, skill="Spell"):
         super().__init__(name)
         self.name = name
         self.damage = damage + random.randint(43,91)
@@ -171,7 +171,7 @@ class Stick(Weapon):
             self.damage = random.randint(10,90)
 
 class Spear(Weapon):
-    def __init__(self, name, damage, skill):
+    def __init__(self, name, damage, skill="Sword"):
         super().__init__(name)
         self.name = name
         self.damage = damage
@@ -184,7 +184,7 @@ class Spear(Weapon):
             self.damage = random.randint(43,91)
 
 class Axe(Weapon):
-    def __init__(self, name, damage, skill):
+    def __init__(self, name, damage, skill="Sword"):
         super().__init__(name)
         self.name = name
         self.damage = damage + random.randint(55,91)
