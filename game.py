@@ -92,5 +92,5 @@ class Warrior(Character):
         return 0
             
     def get_info(self):
-        return f"Name: {self.name}, the Great Warrior\nHealth: {self.health}\nDamage: {((self.weapon).damage)}"
+        return f"Name: {self.name}, the Great\nHealth: {self.health}\nDamage: {((self.weapon).damage)}"
         
