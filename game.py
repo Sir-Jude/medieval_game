@@ -129,10 +129,10 @@ class Warrior(Character):
             if armor == "Shield":
                 self.defence_points += (armor.defence - self.distraction - 5)
                 # wrong armor can take til 50% from defence_points
-            if armor == "Cloak":
+            elif armor == "Cloak":
                 self.defence_points += (armor.defence - self.distraction - 5)
                 # wrong armor can take til 50% from defence_points
-            if armor == "Helmet":
+            elif armor == "Helmet":
                 self.defence_points += (armor.defence - self.distraction)
                 # wrong armor can take til 50% from defence_points
         return self.defence_points
