@@ -52,12 +52,15 @@ class Magician(Character):
         self.armor = armor
         
     def attack(self, weapon):
+        self.distraction = int(random(0,10))
         if  weapon.skill == "Spell":
-            self.attack_points += 10
+            self.attack_points += (weapon.damage - self.distraction)
         elif weapon.skill == "Sword":
-            self.attack_points -=5
+            self.attack_points += (weapon.damage - self.distraction - 5)
+            # self.attack_points -=5
         elif weapon.skill == "Bow":
-            self.attack_points += 0
+            self.attack_points += (weapon.damage - self.distraction - 2)
+            # self.attack_points += 0
         
     def defend(self, armor):
         if armor:
