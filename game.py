@@ -30,6 +30,12 @@ class Weapon(ABC):
     def aim(self):
         pass
 
+class Wand(Weapon):
+    def __init__(self, name, damage=10, skill="Spell"):
+        self.name = name
+        self.damage = damage
+        self.skill = skill 
+
 
 class Bow(Weapon):
     def __init__(self, name, damage=10, skill="Bow"):
@@ -134,9 +140,6 @@ class Warrior(Character):
     def get_info(self):
 
         return f"Name: {self.name}, the Great\nHealth: {self.health}\nDamage: {((self.weapon).damage)}"
-        
-
-
 class Archer(Character):
     def __init__(self, name, health, weapon, armor=None):
         super().__init__(name, health)
