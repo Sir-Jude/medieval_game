@@ -39,24 +39,26 @@ class Magician(Character):
     def __init__(self, name, health, weapon, armor=None):
         super().__init__(name, health)
         self.weapon = weapon
+        self.defence_points = 10
+        self.attack_points = 10
         self.armor = armor
         
     def attack(self, weapon):
         if  weapon.skill == "Spell":
-            self.damage += 10
+            self.attack_points += 10
         elif weapon.skill == "Sword":
-            self.damage -=5
+            self.attack_points -=5
         elif weapon.skill == "Bow":
-            self.damage += 0
+            self.attack_points += 0
         
     def defend(self, armor):
         if armor:
             if armor == "Shield":
-                self.armor += 5
+                self.defence_points += 5
             if armor == "Cloak":
-                self.armor += 10 
+                self.defence_points += 10 
             if armor == "Helmet":
-                self.armor -=3
+                self.defence_points -= 3
         return 0
             
     def get_info(self):
