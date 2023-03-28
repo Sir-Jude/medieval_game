@@ -18,3 +18,18 @@ class Carachter(ABC):
     @abstractmethod
     def get_info(self):
         pass
+    
+    
+class Weapon(ABC):
+    def __init__(self, name, damage):
+        self.name = name
+        self.damage = damage
+    
+    @abstractmethod
+    def aim(self):
+        pass
+
+class Armor(ABC):
+    def __init__(self, name, defence):
+        self.name = name
+        self.defence = defence
