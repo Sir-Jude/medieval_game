@@ -30,6 +30,14 @@ class Weapon(ABC):
     def aim(self):
         pass
 
+
+class Bow(Weapon):
+    def __init__(self, name, damage=10, skill="Bow"):
+        self.name = name
+        self.damage = damage
+        self.skill = skill
+    
+
 class Armor(ABC):
     def __init__(self, name, defence):
         self.name = name
