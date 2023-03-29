@@ -2,20 +2,23 @@ from abc import ABC
 
 
 class Armor(ABC):
-    def __init__(self, name, defence):
+    def __init__(self, name, defence, type):
         self.name = name
         self.defence = defence
+        self.type = type
 
-
-class Cloack(Armor):
-    def __init__(self, name, defence=10, skill="Cloack"):
-        self.name = name
-        self.defence = defence
-        self.skill = skill
-
-
-class Helmet(Armor):
-    def __init__(self, name, defence=5, skill="Helmet"):
-        self.name = name
-        self.defence = defence
-        self.skill = skill
+def armor_factory(armor):
+    if armor.lower() == "cloack":
+        return Armor("Cloack", 5, "light")
+    elif armor.lower() == "helmet":
+        return Armor("Helmet", 10, "heavy")
+    elif armor.lower() == "round shield":
+        return Armor("Round Shield", 15, "light")
+    elif armor.lower() == "roman shield":
+        return Armor("Roman Shield", 20, "heavy")
+    elif armor.lower() == "leather armor":
+        return Armor("Leather Armor", 15, "light")
+    elif armor.lower() == "metal armor":
+        return Armor("Metal Armor", 20, "heavy")
+    else:
+        raise ValueError(f"Invalid armor type: {armor}")
