@@ -2,54 +2,25 @@ from abc import ABC, abstractmethod
 import random
 
 
-class Weapon(ABC): 
+class Weapon: 
     def __init__(self, name, damage, skill):
         self.name = name
         self.damage = damage
         self.skill = skill
 
-
-class Sword(Weapon): # Good for Warrior, bad for Magician, nice for archer
-    def __init__(self, name, damage, skill="close"):
-        super().__init__(name)
-        self.name = name
-        self.damage = damage
-        skill = skill
-
-
-class Axe(Weapon):  # Best for Warrior, worse for Magician, bad for archer
-    def __init__(self, name, damage, skill="close"):
-        super().__init__(name)
-        self.name = name
-        self.damage = damage + random.randint(55, 91)
-        skill = skill
-
-
-class Stick(Weapon):  # bad for Warrior, good for Magician, good for archer
-    def __init__(self, name, damage, skill="magic"):
-        super().__init__(name)
-        self.name = name
-        self.damage = damage + random.randint(43, 91)
-        skill = skill
-
-
-class Wand(Weapon):
-    def __init__(self, name, damage=10, skill="magic"):
-        self.name = name
-        self.damage = damage
-        self.skill = skill
-
-
-class Spear(Weapon):  
-    def __init__(self, name, damage, skill="distant"):
-        super().__init__(name)
-        self.name = name
-        self.damage = damage
-        skill = skill
-
-
-class Bow(Weapon):
-    def __init__(self, name, damage=10, skill="distant"):
-        self.name = name
-        self.damage = damage
-        self.skill = skill
+def weapon_factory(weapon):
+    if weapon.lower() == "sword":
+        return Weapon("Sword", 10, "close")
+    elif weapon.lower() == "axe":
+        return Weapon("Axe", 20, "close")
+    elif weapon.lower() == "stick":
+        return Weapon("Stick", 15, "magic")
+    elif weapon.lower() == "wand":
+        return Weapon("Wand", 10, "magic")
+    elif weapon.lower() == "spear":
+        return Weapon("Spear", 20, "distant")
+    elif weapon.lower() == "bow":
+        return Weapon("Bow", 10, "distant")
+    else:
+        raise ValueError(f"Invalid weapon type: {weapon}")
+    
