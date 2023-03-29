@@ -97,7 +97,7 @@ How do you plan to defend yourself {fighter_name}?
             fighter_person, fighter_name, fighter_weapon, fighter_armor
         )
     )
-    
+
     print(f"Thank you {fighter_name} the {fighter_person} for your enlistment!")
     sleep(2.5)
     system("clear")
@@ -114,25 +114,38 @@ for fighter in fighters:
     print(fighter)
     sleep(0.5)
 enemy = boss.FinalBoss()
-print("And the powerful Markus, the Master of Python!")
-          
+print("And the powerful Markus, the Master of Python!")      
+sleep(3)
+system("clear")
 
 # Arena/battle engine
 battle = True
 turn = 0
+print ("Let the fighting begin!")
 while battle == True:
-     # Game turn
-     turn += 1
-     print(f"Game tun {turn}:")
-     for person in fighters:
-         # Character turn
-         print("Before:", person.name, person.health, "- Boss", enemy.health)
-         enemy.health = enemy.health + enemy.defend() - person.attack()
-         print("After attack:", person.name, person.health, "- Boss", enemy.health)
-         print()
-     # Boss turn
-     # Boss chose one victim
-     person = fighters[random.randint(0, len(fighters))]
-     person.health = person.health + person.defend() - enemy.attack()
-     print("After Boss attack:", person.name, person.health, "- Boss", enemy.health)
-     print()
+    if len(fighters) == 0:
+        battle = False
+    # Game turn
+    turn += 1
+    print(f"Game tun {turn}:")
+    for person in fighters:
+        # Character turn
+        print(f"{person.name} ({person.health}hp) attack {enemy.name} with his {person.weapon.name}.")
+        enemy.health = enemy.health + enemy.defend() - person.attack()
+        print(f"{enemy.name} the Beast has now {enemy.health}")
+        sleep(0.5)
+    # Boss turn
+    # Boss chose one victim
+    person = fighters[random.randint(0, len(fighters))]
+    print(f"{enemy.name} ({enemy.health}hp) attack {person.name} with his brute force.")
+    person.health = person.health + person.defend() - enemy.attack()
+    print(f"{person.name} the {person.person} has now {person.health}")
+    print()
+    if enemy.health <= 0:
+        print("The heroes won!")
+        battle = False
+    elif person.health <= 0:
+        print(f"{person.name} the {person.person} is dead!")
+        fighters.remove(person)
+        battle = False
+
