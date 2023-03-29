@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 import random
 from time import sleep
-import weapon
-import armor
-import character
+import weapons
+import armors
+import characters
 
 fighters = []
 # MENU
@@ -66,7 +66,7 @@ for i in range(0,3):
         fighter_armor = "leather armor"
     else:
         fighter_armor = "metal armor"
-    fighters.append(character_factory(fighter_person, fighter_name, fighter_weapon, fighter_armor))
+    fighters.append(character.character_factory(fighter_person, fighter_name, fighter_weapon, fighter_armor))
 
 print(fighters)
 

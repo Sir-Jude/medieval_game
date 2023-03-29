@@ -1,7 +1,7 @@
 import random
 from time import sleep
-import weapon
-import armor
+import weapons
+import armors
 
 
 
@@ -68,10 +68,10 @@ class Character:
 
 def character_factory(character, name, weapon, armor):
     if character.lower() == "warrior":
-        return Character("warrior", name, "close", weapon_factory(weapon), armor_factory(armor))
+        return Character("warrior", name, "close", weapons.weapon_factory(weapon), armors.armor_factory(armor))
     elif character.lower() == "magician":
-        return Character("magician", name, "magic", weapon_factory(weapon), armor_factory(armor))
+        return Character("magician", name, "magic", weapons.weapon_factory(weapon), armors.armor_factory(armor))
     elif character.lower() == "archer":
-        return Character("archer", name, "distant", weapon_factory(weapon), armor_factory(armor))
+        return Character("archer", name, "distant", weapons.weapon_factory(weapon), armors.armor_factory(armor))
     elif character.lower() == "smith":
-        return Character("smith", name, "close", weapon_factory(weapon), armor_factory(armor))
+        return Character("smith", name, "close", weapons.weapon_factory(weapon), armors.armor_factory(armor))

@@ -1,6 +1,4 @@
-from abc import ABC
-
-class Armor(ABC):
+class Armor:
     def __init__(self, name, defense, skill):
         self.name = name
         self.defense = defense
