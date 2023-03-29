@@ -82,9 +82,9 @@ while battle == True:
     # Game turn
     for person in fighters:
         # Character turn
-        print(person.health, enemy.health)
+        print("Before",person.name, person.health, "- Boss", enemy.health)
         enemy.health = enemy.defend() - person.attack()
-        print(person.health, enemy.health)
+        print("After",person.name, person.health, "- Boss", enemy.health)
 
     battle = False
 

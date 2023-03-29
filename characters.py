@@ -17,47 +17,45 @@ class Character:
         self.attack_points = 15
         
 
-    def attack(self, weapon):
-        self.distraction = int(
-            random(0, 11)
-        )  # distraction can take til 100% from attack_points
-        if weapon:
-            if weapon.skill == self.skill:
-                self.attack_points += weapon.damage - self.distraction + 5
+    def attack(self):
+        self.distraction = random.randint(0, 11)
+        # distraction can take til 100% from attack_points
+        if self.weapon:
+            if self.weapon.skill == self.skill:
+                self.attack_points += self.weapon.damage - self.distraction + 5
                 # wrong weapon can take til 50% from attack_points
-            elif weapon.skill == "close" and self.skill == "distant":
-                self.attack_points += weapon.damage - self.distraction -2
+            elif self.weapon.skill == "close" and self.skill == "distant":
+                self.attack_points += self.weapon.damage - self.distraction -2
                 # a proper weapon can add til 50% from attack_points
-            elif weapon.skill == "close" and self.skill == "magic":
-                self.attack_points += weapon.damage - self.distraction - 5
+            elif self.weapon.skill == "close" and self.skill == "magic":
+                self.attack_points += self.weapon.damage - self.distraction - 5
                 # wrong weapon can take til 50% from attack_points
-            elif weapon.skill == "distant" and self.skill == "close":
-                self.attack_points += weapon.damage - self.distraction -2
+            elif self.weapon.skill == "distant" and self.skill == "close":
+                self.attack_points += self.weapon.damage - self.distraction -2
                 # wrong weapon can take til 50% from attack_points
-            elif weapon.skill == "distant" and self.skill == "magic":
-                self.attack_points += weapon.damage - self.distraction -5
+            elif self.weapon.skill == "distant" and self.skill == "magic":
+                self.attack_points += self.weapon.damage - self.distraction -5
                 # a proper weapon can add til 50% from attack_points
-            elif weapon.skill == "magic" and self.skill == "close":
-                self.attack_points += weapon.damage - self.distraction -5
+            elif self.weapon.skill == "magic" and self.skill == "close":
+                self.attack_points += self.weapon.damage - self.distraction -5
                 # wrong weapon can take til 50% from attack_points
-            elif weapon.skill == "magic" and self.skill == "distant":
-                self.attack_points += weapon.damage - self.distraction -2
+            elif self.weapon.skill == "magic" and self.skill == "distant":
+                self.attack_points += self.weapon.damage - self.distraction -2
                 # a proper weapon can add til 50% from attack_points
         return self.attack_points
 
-    def defend(self, armor):
-        self.distraction = int(
-            random(0, 11)
-        )  # distraction can take til 100% from defence_points
-        if armor:
-            if armor == "Shield":
-                self.defence_points += armor.defence - self.distraction - 5
+    def defend(self):
+        self.distraction = random.randint(0, 11)
+        # distraction can take til 100% from defence_points
+        if self.armor:
+            if self.armor == "Shield":
+                self.defence_points += self.armor.defence - self.distraction - 5
                 # wrong armor can take til 50% from defence_points
-            elif armor == "Cloak":
-                self.defence_points += armor.defence - self.distraction - 5
+            elif self.armor == "Cloak":
+                self.defence_points += self.armor.defence - self.distraction - 5
                 # wrong armor can take til 50% from defence_points
-            elif armor == "Helmet":
-                self.defence_points += armor.defence - self.distraction
+            elif self.armor == "Helmet":
+                self.defence_points += self.armor.defence - self.distraction
                 # wrong armor can take til 50% from defence_points
         return self.defence_points
 
