@@ -2,7 +2,7 @@ import random
 from time import sleep
 
 class FinalBoss:
-    def __init__(self, name="Markus", health=500, attack_points=25, defence_points=50):
+    def __init__(self, name="Markus", health=500, attack_points=25, defence_points=15):
         self.name = name
         self.health = health
         self.attack_points = attack_points

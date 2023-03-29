@@ -72,8 +72,6 @@ for i in range(0,3):
     fighters.append(characters.character_factory(fighter_person, fighter_name, fighter_weapon, fighter_armor))
     system("clear")
 
-print(fighters)
-print(fighters[0].get_info())
 enemy = boss.FinalBoss()
 
 # Arena/battle engine
@@ -82,9 +80,9 @@ while battle == True:
     # Game turn
     for person in fighters:
         # Character turn
-        print("Before",person.name, person.health, "- Boss", enemy.health)
-        enemy.health = enemy.defend() - person.attack()
-        print("After",person.name, person.health, "- Boss", enemy.health)
-
+        print("Before:",person.name, person.health, "- Boss", enemy.health)
+        enemy.health = enemy.health + enemy.defend() - person.attack()
+        print("After attack:",person.name, person.health, "- Boss", enemy.health)
+        print()
     battle = False
 
