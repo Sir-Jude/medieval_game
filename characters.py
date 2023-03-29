@@ -59,7 +59,7 @@ class Character:
                 # wrong armor can take til 50% from defence_points
         return self.defence_points
 
-    def get_info(self):
+    def __str__(self):
 
         return f"Name: {self.name}, the Great\nHealth: {self.health}\nDamage: {((self.weapon).damage)}"
 
