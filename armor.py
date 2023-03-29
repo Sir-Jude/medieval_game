@@ -2,10 +2,10 @@ from abc import ABC
 
 
 class Armor(ABC):
-    def __init__(self, name, defence, type):
+    def __init__(self, name, defence, armor_type):
         self.name = name
         self.defence = defence
-        self.type = type
+        self.armor_type = armor_type
 
 def armor_factory(armor):
     if armor.lower() == "cloack":
