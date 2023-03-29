@@ -8,7 +8,7 @@ from os import system
 
 # giulio = characters.character_factory(fighter_person)
 
-
+system("clear")
 print("Welcome, heros!")
 print(
     "You are on the quest to defeat the grat and powerful Markus, the Master of Python!\n"
