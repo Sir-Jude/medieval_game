@@ -151,12 +151,12 @@ class Archer(Character):
         return self.defence_points
 
 
-def character_factory(character):
+def character_factory(character, name, weapon, armor):
     if character.lower() == "warrior":
-        return Character("warrior", name=None, health=10)
+        return Character("warrior", name, "close", health=10, weapon_factory(weapon), armor_factory(armor))
     elif character.lower() == "magician":
-        return Character("magician", name=None, health=10)
+        return Character("magician", name, "magic", health=10, weapon_factory(weapon), armor_factory(armor))
     elif character.lower() == "archer":
-        return Character("archer", name=None, health=10)
+        return Character("archer", name, "distant", health=10, weapon_factory(weapon), armor_factory(armor))
     elif character.lower() == "smith":
-        return Character("smith", name=None, health=10)
+        return Character("smith", name, "close", health=10, weapon_factory(weapon), armor_factory(armor))
