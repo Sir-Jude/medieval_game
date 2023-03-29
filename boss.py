@@ -2,7 +2,7 @@ import random
 from time import sleep
 
 class FinalBoss:
-    def __init__(self, name="Markus", health=500, attack_points=25, defence_points=15):
+    def __init__(self, name="Markus", health=500, attack_points=20, defence_points=20):
         self.name = name
         self.health = health
         self.attack_points = attack_points
@@ -13,7 +13,7 @@ class FinalBoss:
         # Final boss can do a critical attacks someties
         if random.randint(0, 10) == 0:
             attak_power *= 2
-            print(f"{self.name} did a critical attack!")
+            print(f"{self.name} did a critical attack({attak_power})!")
         return attak_power
 
     def defend(self):
@@ -21,7 +21,7 @@ class FinalBoss:
         # Final boss can restore his health sometimes
         if random.randint(0, 10) == 0:
             self.health += 50
-            print(f"{self.name} increased his health!")
+            print(f"{self.name} increased his health(+50)!")
         return defence_power
 
     def take_damage(self, damage):

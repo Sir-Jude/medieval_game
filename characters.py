@@ -42,7 +42,7 @@ class Character:
         return attak_power
 
     def defend(self):
-        self.distraction = random.randint(0, 11)
+        self.distraction = random.randint(0, 10)
         # distraction can take up to 10 points from defence_power
         if self.armor:
             if self.armor.skill == self.skill:
@@ -60,7 +60,7 @@ class Character:
             elif self.armor.skill == "magic" and self.skill == "distant":
                 defence_power = self.defence_points + self.armor.defence - self.distraction - 2
                 # other armor can take up to 2 points from defence_power
-            elif self.armor.skill == "Helmet":
+            else:
                 defence_power = self.defence_points + self.armor.defence - self.distraction
                 # this is just a neutral situation
         return defence_power

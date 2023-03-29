@@ -100,7 +100,7 @@ How do you plan to defend yourself {fighter_name}?
     )
 
     print(f"Thank you {fighter_name} the {fighter_person} for your enlistment!")
-    sleep(2.5)
+    sleep(1)
     system("clear")
     if len(fighters) < 3:
         print(f"Till now we have {len(fighters)} heroes enlisted:")
@@ -125,33 +125,32 @@ turn = 0
 print ("Let the fighting begin!")
 while battle == True:
     if len(fighters) == 0:
-        battle = False
+        print("All heros are dead!")
+        break
+    input("Are you ready for next turn?")
     # Game turn
     turn += 1
     print(f"Game tun {turn}:")
     for person in fighters:
         # Character turn
-        defence_power = enemy.defend()
-        attack_power = person.attack()
-        print(f"{person.name} ({person.health}hp) attack {enemy.name} with his {person.weapon.name}.")
-        print(f"{enemy.name} the Beast has now {enemy.health} (-{defence_power-attack_power})")
-        enemy.health = enemy.health + defence_power - attack_power
+        def_power = enemy.defend()
+        att_power = person.attack()
+        print(f"{person.name} ({person.health}hp) attack {enemy.name} with his {person.weapon.name}({att_power}).")
+        print(f"{enemy.name} the Beast has now {enemy.health} {def_power-att_power} hp.")
+        enemy.health = enemy.health - def_power - att_power
         sleep(0.5)
     # Boss turn
     # Boss chose one victim
-    person = fighters[random.randint(0, len(fighters))]
-    print(f"{enemy.name} ({enemy.health}hp) attack {person.name} with his brute force.")
-    defence_power = person.defend()
-    attack_power = enemy.attack()
-    print(f"{person.name} the {person.person} has now {person.health} (-{defence_power-attack_power})")
-    person.health = person.health + defence_power - attack_power
-    print()
+    person = fighters[random.randint(0, len(fighters)-1)]
+    def_power = person.defend()
+    att_power = enemy.attack()
+    print(f"{enemy.name} ({enemy.health}hp) attack {person.name} with his brute force({att_power}).")
+    print(f"{person.name} the {person.person} has now {person.health} {def_power-att_power} hp.")
+    person.health = person.health - def_power - att_power
     if enemy.health <= 0:
         print("The heroes won!")
         battle = False
-    elif person.health <= 0:
+    if person.health <= 0:
         print(f"{person.name} the {person.person} is dead!")
         fighters.remove(person)
-        battle = False
-    else:
-        input("Are you ready for next turn?")
+    print()
