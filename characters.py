@@ -13,54 +13,59 @@ class Character:
         self.health = health
         self.weapon = weapon
         self.armor = armor
-        self.defence_points = 15
-        self.attack_points = 15
+        self.defence_points = 10
+        self.attack_points = 10
         
 
     def attack(self):
         self.distraction = random.randint(0, 11)
-        # distraction can take til 100% from attack_points
+        # distraction can take up to 10 points from attack_power
         if self.weapon:
             if self.weapon.skill == self.skill:
-                self.attack_points += self.weapon.damage - self.distraction + 5
-                # wrong weapon can take til 50% from attack_points
+                attak_power = self.attack_points + self.weapon.damage - self.distraction + 5
+                # a proper weapon can add up to 5 to attack_power
             elif self.weapon.skill == "close" and self.skill == "distant":
-                self.attack_points += self.weapon.damage - self.distraction -2
-                # a proper weapon can add til 50% from attack_points
-            elif self.weapon.skill == "close" and self.skill == "magic":
-                self.attack_points += self.weapon.damage - self.distraction - 5
-                # wrong weapon can take til 50% from attack_points
+                attak_power = self.attack_points + self.weapon.damage - self.distraction - 5
+                # a totaly wrong weapon can take up to 5 points from attack_power
             elif self.weapon.skill == "distant" and self.skill == "close":
-                self.attack_points += self.weapon.damage - self.distraction -2
-                # wrong weapon can take til 50% from attack_points
+                attak_power = self.attack_points + self.weapon.damage - self.distraction - 5
+                # a totaly wrong weapon can take up to 5 points from attack_power
             elif self.weapon.skill == "distant" and self.skill == "magic":
-                self.attack_points += self.weapon.damage - self.distraction -5
-                # a proper weapon can add til 50% from attack_points
-            elif self.weapon.skill == "magic" and self.skill == "close":
-                self.attack_points += self.weapon.damage - self.distraction -5
-                # wrong weapon can take til 50% from attack_points
+                attak_power = self.attack_points + self.weapon.damage - self.distraction -2
+                # other weapons can take up to 2 points from attack_power
             elif self.weapon.skill == "magic" and self.skill == "distant":
-                self.attack_points += self.weapon.damage - self.distraction -2
-                # a proper weapon can add til 50% from attack_points
-        return self.attack_points
+                attak_power = self.attack_points + self.weapon.damage - self.distraction - 2
+                # other weapons can take up to 2 points from attack_power
+            else:
+                attak_power = self.attack_points + self.weapon.damage - self.distraction
+                # this is just a neutral situation
+        return attak_power
 
     def defend(self):
         self.distraction = random.randint(0, 11)
-        # distraction can take til 100% from defence_points
+        # distraction can take up to 10 points from defence_power
         if self.armor:
-            if self.armor == "Shield":
-                self.defence_points += self.armor.defence - self.distraction - 5
-                # wrong armor can take til 50% from defence_points
-            elif self.armor == "Cloak":
-                self.defence_points += self.armor.defence - self.distraction - 5
-                # wrong armor can take til 50% from defence_points
-            elif self.armor == "Helmet":
-                self.defence_points += self.armor.defence - self.distraction
-                # wrong armor can take til 50% from defence_points
-        return self.defence_points
+            if self.armor.skill == self.skill:
+                defence_power = self.defence_points + self.armor.defence - self.distraction + 5
+                # a proper armor can add up to 5 to defence_power
+            elif self.armor.skill == "close" and self.skill == "distant":
+                defence_power = self.defence_points + self.armor.defence - self.distraction - 5
+                # a totaly wrong armor can take up to 5 points from defence_power
+            elif self.armor.skill == "distant" and self.skill == "close":
+                defence_power = self.defence_points + self.armor.defence - self.distraction - 5
+                # a totaly wrong armor can take up to 5 points from defence_power
+            elif self.armor.skill == "distant" and self.skill == "magic":
+                defence_power = self.defence_points + self.armor.defence - self.distraction - 2
+                # other armor can take up to 2 points from defence_power
+            elif self.armor.skill == "magic" and self.skill == "distant":
+                defence_power = self.defence_points + self.armor.defence - self.distraction - 2
+                # other armor can take up to 2 points from defence_power
+            elif self.armor.skill == "Helmet":
+                defence_power = self.defence_points + self.armor.defence - self.distraction
+                # this is just a neutral situation
+        return defence_power
 
     def __str__(self):
-
         return f"{self.name}, a great {self.person}, who will fight with a {self.weapon.name} and a {self.armor.name}."
 
 
