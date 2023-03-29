@@ -91,11 +91,13 @@ How do you plan to defend yourself {fighter_name}?
         fighter_armor = "leather armor"
     else:
         fighter_armor = "metal armor"
+    
     fighters.append(
         characters.character_factory(
             fighter_person, fighter_name, fighter_weapon, fighter_armor
         )
     )
+    
     print(f"Thank you {fighter_name} the {fighter_person} for your enlistment!")
     sleep(2.5)
     system("clear")
@@ -105,30 +107,32 @@ How do you plan to defend yourself {fighter_name}?
             print(fighter)
         print(f"We need {3-len(fighters)} more...")
 
+# The list of combatants
 system("clear")
 print("So we have...")
 for fighter in fighters:    
     print(fighter)
-    sleep(0.5)      
+    sleep(0.5)
+enemy = boss.FinalBoss()
+print("And the powerful Markus, the Master of Python!")
           
-# enemy = boss.FinalBoss()
 
-# # Arena/battle engine
-# battle = True
-# turn = 0
-# while battle == True:
-#     # Game turn
-#     turn += 1
-#     print(f"Game tun {turn}:")
-#     for person in fighters:
-#         # Character turn
-#         print("Before:", person.name, person.health, "- Boss", enemy.health)
-#         enemy.health = enemy.health + enemy.defend() - person.attack()
-#         print("After attack:", person.name, person.health, "- Boss", enemy.health)
-#         print()
-#     # Boss turn
-#     # Boss chose one victim
-#     person = fighters[random.randint(0, len(fighters))]
-#     person.health = person.health + person.defend() - enemy.attack()
-#     print("After Boss attack:", person.name, person.health, "- Boss", enemy.health)
-#     print()
+# Arena/battle engine
+battle = True
+turn = 0
+while battle == True:
+     # Game turn
+     turn += 1
+     print(f"Game tun {turn}:")
+     for person in fighters:
+         # Character turn
+         print("Before:", person.name, person.health, "- Boss", enemy.health)
+         enemy.health = enemy.health + enemy.defend() - person.attack()
+         print("After attack:", person.name, person.health, "- Boss", enemy.health)
+         print()
+     # Boss turn
+     # Boss chose one victim
+     person = fighters[random.randint(0, len(fighters))]
+     person.health = person.health + person.defend() - enemy.attack()
+     print("After Boss attack:", person.name, person.health, "- Boss", enemy.health)
+     print()

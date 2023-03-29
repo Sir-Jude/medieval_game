@@ -9,18 +9,20 @@ class FinalBoss:
         self.defence_points = defence_points
 
     def attack(self):
+        attak_power = random.randint(self.attack_points/2, self.attack_points)
         # Final boss can do a critical attacks someties
         if random.randint(0, 10) == 0:
-            self.attack_points *= 2
+            attak_power *= 2
             print(f"{self.name} did a critical attack!")
-        return self.attack_points
+        return attak_power
 
     def defend(self):
-        # Final boss can defend himself better sometimes
+        defence_power = random.randint(self.defence_points/2, self.defence_points)
+        # Final boss can restore his health sometimes
         if random.randint(0, 10) == 0:
-            self.defence_points += 100
-            print(f"{self.name} increased his defense!")
-        return self.defence_points
+            self.health += 50
+            print(f"{self.name} increased his health!")
+        return defence_power
 
     def take_damage(self, damage):
         # Final boss can regenerate his healh sometimes
@@ -29,15 +31,6 @@ class FinalBoss:
             self.health += 50
         self.health -= (damage - self.defence_points)
         return self.health
-
-    def get_info(self):
-        return f"Name: {self.name}\nHealth: {self.health}\nAttack: {self.attack_points}\nDefense: {self.defence_points}"
     
-Markus = FinalBoss()
-print(Markus.get_info())
-
-Markus.attack()
-Markus.defend()
-Markus.take_damage(100)
-print(Markus.get_info())
-
+    def __str__(self):
+        return f"{self.name} the Beast, who has {self.health} points of health and some unexpected skills."
