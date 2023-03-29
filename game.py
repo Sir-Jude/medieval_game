@@ -4,8 +4,10 @@ from time import sleep
 import weapons
 import armors
 import characters
+from os import system
 
 fighters = []
+system("clear")
 # MENU
 for i in range(0,3):
     fighter_name  = input("Name of first character: ")
@@ -67,6 +69,7 @@ for i in range(0,3):
     else:
         fighter_armor = "metal armor"
     fighters.append(characters.character_factory(fighter_person, fighter_name, fighter_weapon, fighter_armor))
+    system("clear")
 
 print(fighters)
 
