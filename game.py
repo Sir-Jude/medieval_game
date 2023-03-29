@@ -83,7 +83,7 @@ while battle == True:
     for person in fighters:
         # Character turn
         print(person.health, enemy.health)
-        enemy.health = enemy.defend() - person.atack()
+        enemy.health = enemy.defend() - person.attack()
         print(person.health, enemy.health)
 
     battle = False
