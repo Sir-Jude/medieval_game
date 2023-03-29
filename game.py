@@ -46,7 +46,7 @@ for i in range(0,3):
         fighter_weapon = "bow"
     fighter_armor  = input("""
     Chose the armor:
-    [1] cloack
+    [1] cloak
     [2] helmet
     [3] round shield
     [4] roman shield
@@ -54,7 +54,7 @@ for i in range(0,3):
     [6] metal armor
     -> """)
     if fighter_armor == "1":
-        fighter_armor = "cloack"
+        fighter_armor = "cloak"
     elif fighter_armor == "2":
         fighter_armor = "helmet"
     elif fighter_armor == "3":
