@@ -2,56 +2,54 @@ from abc import ABC, abstractmethod
 import random
 
 
-class Weapon(ABC):
+class Weapon(ABC): 
     def __init__(self, name, damage, skill):
         self.name = name
         self.damage = damage
         self.skill = skill
 
-    @abstractmethod
-    def aim(self):
-        pass
 
-
-class Wand(Weapon):
-    def __init__(self, name, damage=10, skill="Spell"):
-        self.name = name
-        self.damage = damage
-        self.skill = skill
-
-
-class Bow(Weapon):
-    def __init__(self, name, damage=10, skill="Bow"):
-        self.name = name
-        self.damage = damage
-        self.skill = skill
-
-
-# So as we are have 5 characters we need to replace numbers with values
-class Sword(Weapon):
-    def __init__(self, name, damage, skill="Sword"):
+class Sword(Weapon): # Good for Warrior, bad for Magician, nice for archer
+    def __init__(self, name, damage, skill="close"):
         super().__init__(name)
         self.name = name
         self.damage = damage
         skill = skill
 
-class Stick(Weapon):
-    def __init__(self, name, damage, skill="Spell"):
+
+class Axe(Weapon):  # Best for Warrior, worse for Magician, bad for archer
+    def __init__(self, name, damage, skill="close"):
+        super().__init__(name)
+        self.name = name
+        self.damage = damage + random.randint(55, 91)
+        skill = skill
+
+
+class Stick(Weapon):  # bad for Warrior, good for Magician, good for archer
+    def __init__(self, name, damage, skill="magic"):
         super().__init__(name)
         self.name = name
         self.damage = damage + random.randint(43, 91)
         skill = skill
 
-class Spear(Weapon):
-    def __init__(self, name, damage, skill="Sword"):
+
+class Wand(Weapon):
+    def __init__(self, name, damage=10, skill="magic"):
+        self.name = name
+        self.damage = damage
+        self.skill = skill
+
+
+class Spear(Weapon):  
+    def __init__(self, name, damage, skill="distant"):
         super().__init__(name)
         self.name = name
         self.damage = damage
         skill = skill
 
-class Axe(Weapon):
-    def __init__(self, name, damage, skill="Sword"):
-        super().__init__(name)
+
+class Bow(Weapon):
+    def __init__(self, name, damage=10, skill="distant"):
         self.name = name
-        self.damage = damage + random.randint(55, 91)
-        skill = skill
+        self.damage = damage
+        self.skill = skill
