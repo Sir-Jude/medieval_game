@@ -6,9 +6,10 @@ import armor
 
 
 class Character:
-    def __init__(self, person, name, health, weapon=None, armor=None):
+    def __init__(self, person, name, skill, health, weapon=None, armor=None):
         self.person = person
         self.name = name
+        self.skill = skill
         self.health = health
         self.weapon = weapon
         self.armor = armor
@@ -21,15 +22,27 @@ class Character:
             random(0, 11)
         )  # distraction can take til 100% from attack_points
         if weapon:
-            if weapon.skill == "Spell":
+            if weapon.skill == self.skill:
+                self.attack_points += weapon.damage - self.distraction + 5
+                # wrong weapon can take til 50% from attack_points
+            elif weapon.skill == "close" and self.skill == "distant":
+                self.attack_points += weapon.damage - self.distraction -2
+                # a proper weapon can add til 50% from attack_points
+            elif weapon.skill == "close" and self.skill == "magic":
                 self.attack_points += weapon.damage - self.distraction - 5
                 # wrong weapon can take til 50% from attack_points
-            elif weapon.skill == "Sword":
-                self.attack_points += weapon.damage - self.distraction + 5
-                # a proper weapon can add til 50% from attack_points
-            elif weapon.skill == "Bow":
-                self.attack_points -= weapon.damage - self.distraction
+            elif weapon.skill == "distant" and self.skill == "close":
+                self.attack_points += weapon.damage - self.distraction -2
                 # wrong weapon can take til 50% from attack_points
+            elif weapon.skill == "distant" and self.skill == "magic":
+                self.attack_points += weapon.damage - self.distraction -5
+                # a proper weapon can add til 50% from attack_points
+            elif weapon.skill == "magic" and self.skill == "close":
+                self.attack_points += weapon.damage - self.distraction -5
+                # wrong weapon can take til 50% from attack_points
+            elif weapon.skill == "magic" and self.skill == "distant":
+                self.attack_points += weapon.damage - self.distraction -2
+                # a proper weapon can add til 50% from attack_points
         return self.attack_points
 
     def defend(self, armor):
