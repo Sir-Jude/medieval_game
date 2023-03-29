@@ -4,7 +4,7 @@ from time import sleep
 class FinalBoss:
     def __init__(self, name="Markus", health=500, attack_points=25, defence_points=50):
         self.name = name
-        self._health = health
+        self.health = health
         self.attack_points = attack_points
         self.defence_points = defence_points
 

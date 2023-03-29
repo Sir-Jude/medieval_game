@@ -4,6 +4,7 @@ from time import sleep
 import weapons
 import armors
 import characters
+import boss
 from os import system
 
 fighters = []
@@ -73,9 +74,7 @@ for i in range(0,3):
 
 print(fighters)
 print(fighters[0].get_info())
-
-"""# The saved list of fighters as objects
-fighters = ["bob","bibi","mark"]
+enemy = boss.FinalBoss()
 
 # Arena/battle engine
 battle = True
@@ -83,10 +82,9 @@ while battle == True:
     # Game turn
     for person in fighters:
         # Character turn
-        char_index = fighters.index(person)
-        # Chose an enemy from the remains characters
-        enemy = random.choice([e for e in fighters if fighters.index(e) != char_index])
-        # Atack the enemy
+        print(person.health, enemy.health)
         enemy.health = enemy.defend() - person.atack()
-    battle = False"""
+        print(person.health, enemy.health)
+
+    battle = False
 
