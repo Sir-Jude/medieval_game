@@ -6,7 +6,7 @@ import armor
 
 
 class Character:
-    def __init__(self, person, name, skill, health, weapon=None, armor=None):
+    def __init__(self, person, name, skill, weapon=None, armor=None, health=10):
         self.person = person
         self.name = name
         self.skill = skill
@@ -68,10 +68,10 @@ class Character:
 
 def character_factory(character, name, weapon, armor):
     if character.lower() == "warrior":
-        return Character("warrior", name, "close", health=10, weapon_factory(weapon), armor_factory(armor))
+        return Character("warrior", name, "close", weapon_factory(weapon), armor_factory(armor), health=10)
     elif character.lower() == "magician":
-        return Character("magician", name, "magic", health=10, weapon_factory(weapon), armor_factory(armor))
+        return Character("magician", name, "magic", weapon_factory(weapon), armor_factory(armor), health=10)
     elif character.lower() == "archer":
-        return Character("archer", name=None, health=10)
+        return Character("archer", name, "distant", weapon_factory(weapon), armor_factory(armor), health=10)
     elif character.lower() == "smith":
-        return Character("smith", name=None, health=10)
+        return Character("smith", name, "close", weapon_factory(weapon), armor_factory(armor), health=10)

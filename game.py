@@ -67,7 +67,9 @@ for i in range(0,3):
         fighter_armor = "metal armor"
     fighters.append(character_factory(fighter_person, fighter_name, fighter_weapon, fighter_armor))
 
-# The saved list of fighters as objects
+print(fighters)
+
+"""# The saved list of fighters as objects
 fighters = ["bob","bibi","mark"]
 
 # Arena/battle engine
@@ -81,5 +83,5 @@ while battle == True:
         enemy = random.choice([e for e in fighters if fighters.index(e) != char_index])
         # Atack the enemy
         enemy.health = enemy.defend() - person.atack()
-    battle = False
+    battle = False"""
 
