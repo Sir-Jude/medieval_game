@@ -10,7 +10,7 @@ fighters = []
 system("clear")
 # MENU
 for i in range(0,3):
-    fighter_name  = input("Name of first character: ")
+    fighter_name  = input(f"Name of character {i+1}: ")
     fighter_person  = input("""
     Chose a character type:
     [1] warrior
@@ -72,6 +72,7 @@ for i in range(0,3):
     system("clear")
 
 print(fighters)
+print(fighters[0].get_info())
 
 """# The saved list of fighters as objects
 fighters = ["bob","bibi","mark"]
