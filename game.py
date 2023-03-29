@@ -9,7 +9,8 @@ fighters = []
 # MENU
 for i in range(0,3):
     fighter_name  = input("Name of first character: ")
-    fighter_person  = input("""Chose a character type:
+    fighter_person  = input("""
+    Chose a character type:
     [1] warrior
     [2] magician
     [3] archer
