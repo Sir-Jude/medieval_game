@@ -9,7 +9,7 @@ class FinalBoss:
         self.defence_points = defence_points
 
     def attack(self):
-        attak_power = random.randint(self.attack_points/2, self.attack_points)
+        attak_power = random.randint(int(self.attack_points/2), self.attack_points)
         # Final boss can do a critical attacks someties
         if random.randint(0, 10) == 0:
             attak_power *= 2
@@ -17,7 +17,7 @@ class FinalBoss:
         return attak_power
 
     def defend(self):
-        defence_power = random.randint(self.defence_points/2, self.defence_points)
+        defence_power = random.randint(int(self.defence_points/2), self.defence_points)
         # Final boss can restore his health sometimes
         if random.randint(0, 10) == 0:
             self.health += 50

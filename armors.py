@@ -1,8 +1,8 @@
 class Armor:
-    def __init__(self, name, defense, skill):
+    def __init__(self, name, defence, skill):
         self.name = name
-        self.defense = defense
-        self.armor_type = skill
+        self.defence = defence
+        self.skill = skill
 
 def armor_factory(armor):
     if armor.lower() == "cloak":
