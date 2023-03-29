@@ -35,28 +35,12 @@ class Sword(Weapon):
         self.damage = damage
         skill = skill
 
-    def aim(self, hit):
-        if hit == 1 or hit == 2:
-            self.damage = random.randint(51, 88)
-        elif hit == 3 or hit == 4 or hit == 5:
-            self.damage = random.randint(19, 45)
-
-
 class Stick(Weapon):
     def __init__(self, name, damage, skill="Spell"):
         super().__init__(name)
         self.name = name
         self.damage = damage + random.randint(43, 91)
         skill = skill
-
-    def aim(self, hit):
-        if hit == 1:
-            self.damage = random.randint(70, 100)
-        elif hit == 3 or hit == 4 or hit == 5:
-            self.damage = random.randint(20, 45)
-        else:
-            self.damage = random.randint(10, 90)
-
 
 class Spear(Weapon):
     def __init__(self, name, damage, skill="Sword"):
@@ -65,22 +49,9 @@ class Spear(Weapon):
         self.damage = damage
         skill = skill
 
-    def aim(self, hit):
-        if hit == 1 or hit == 2:
-            self.damage = random.randint(43, 91)
-        elif hit == 3 or hit == 4 or hit == 5:
-            self.damage = random.randint(43, 91)
-
-
 class Axe(Weapon):
     def __init__(self, name, damage, skill="Sword"):
         super().__init__(name)
         self.name = name
         self.damage = damage + random.randint(55, 91)
         skill = skill
-
-    def aim(self, hit):
-        if hit == 1 or hit == 2:
-            self.damage = random.randint(55, 91)
-        elif hit == 3 or hit == 4 or hit == 5:
-            self.damage = random.randint(35, 70)
