@@ -8,11 +8,6 @@ class Weapon(ABC):
         self.damage = damage
         self.skill = skill
 
-    @abstractmethod
-    def aim(self):
-        pass
-
-
 class Wand(Weapon):
     def __init__(self, name, damage=10, skill="Spell"):
         self.name = name
@@ -27,7 +22,6 @@ class Bow(Weapon):
         self.skill = skill
 
 
-# So as we are have 5 characters we need to replace numbers with values
 class Sword(Weapon):
     def __init__(self, name, damage, skill="Sword"):
         super().__init__(name)
