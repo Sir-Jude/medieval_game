@@ -61,7 +61,7 @@ class Character:
 
     def __str__(self):
 
-        return f"Name: {self.name}, the Great\nHealth: {self.health}\nDamage: {((self.weapon).damage)}"
+        return f"{self.name}, a great {self.person}, who will fight with a {self.weapon.name} and a {self.armor.name}."
 
 
 def character_factory(character, name, weapon, armor):

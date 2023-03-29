@@ -100,8 +100,11 @@ And finally, what are you using to defend yourself?
     input("Press Enter to continue")
     system("clear")
 
-for i in fighters:    
-    print(i)
+print("So we have...")
+for fighter in fighters:    
+    print(fighter)
+    sleep(0.5)      
+          
 # enemy = boss.FinalBoss()
 
 # # Arena/battle engine
