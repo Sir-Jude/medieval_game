@@ -148,4 +148,3 @@ while battle == True:
         print(f"{person.name} the {person.person} is dead!")
         fighters.remove(person)
         battle = False
-
