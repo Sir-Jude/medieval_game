@@ -42,20 +42,6 @@ class Sword(Weapon):
             self.damage = random.randint(19, 45)
 
 
-class Bow(Weapon):
-    def __init__(self, name, damage=random.randint(60, 70), skill="Bow"):
-        super().__init__(name)
-        self.name = name
-        self.damage = damage
-        skill = skill
-
-    def aim(self, hit):
-        if hit == 1 or hit == 2:
-            self.damage = random.randint(60, 75)
-        elif hit == 3 or hit == 4 or hit == 5:
-            self.damage = random.randint(50, 65)
-
-
 class Stick(Weapon):
     def __init__(self, name, damage, skill="Spell"):
         super().__init__(name)
