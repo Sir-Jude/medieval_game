@@ -76,13 +76,21 @@ enemy = boss.FinalBoss()
 
 # Arena/battle engine
 battle = True
+turn = 0
 while battle == True:
     # Game turn
+    turn += 1
+    print(f"Game tun {turn}:")
     for person in fighters:
         # Character turn
         print("Before:",person.name, person.health, "- Boss", enemy.health)
         enemy.health = enemy.health + enemy.defend() - person.attack()
         print("After attack:",person.name, person.health, "- Boss", enemy.health)
         print()
-    battle = False
+    # Boss turn
+    # Boss chose one victim
+    person  = fighters[random.randint(0, len(fighters))]
+    person.health = person.health + person.defend() - enemy.attack()
+    print("After Boss attack:",person.name, person.health, "- Boss", enemy.health)
+    print()
 
