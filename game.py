@@ -11,21 +11,21 @@ from os import system
 system("clear")
 print("Welcome, heros!")
 print(
-    "You are on the quest to defeat the grat and powerful Markus, the Master of Python!\n"
+    "You are on the quest to defeat the great and powerful Markus, the Master of Python!\n"
 )
 fighters = []
 # MENU
-for i in range(0, 3):
-    if i == 0:
+for i in range(1, 4):
+    if i == 1:
         fighter_name = input("You, which is your name? ").title()
-    elif i == 1:
-        fighter_name = input("And you, which is your name? ").title()
+    elif i == 2:
+        fighter_name = input("And you there, which is your name? ").title()
     else:
         fighter_name = input("And finally you, how are you known? ").title()
 
     fighter_person = input(
-        """
-And what are you?
+        f"""
+And what are you {fighter_name}?
 [1] warrior
 [2] magician
 [3] archer
@@ -40,12 +40,11 @@ And what are you?
         fighter_person = "archer"
     else:
         fighter_person = "smith"
-    input(f"Mhm...a {fighter_person}...\n(Press Enter to continue)")
     system("clear")
 
     fighter_weapon = input(
-        """
-What are you going to fight with?
+        f"""
+{fighter_name} the {fighter_person}, what are you going to fight with?
 [1] sword
 [2] axe
 [3] stick
@@ -66,12 +65,12 @@ What are you going to fight with?
         fighter_weapon = "spear"
     else:
         fighter_weapon = "bow"
-    input("Press Enter to continue")
     system("clear")
 
     fighter_armor = input(
-        """
-And finally, what are you using to defend yourself?
+        f"""
+{fighter_name} the {fighter_person}, you have just a {fighter_weapon}.
+How do you plan to defend yourself {fighter_name}?
 [1] cloak
 [2] helmet
 [3] round shield
@@ -97,9 +96,16 @@ And finally, what are you using to defend yourself?
             fighter_person, fighter_name, fighter_weapon, fighter_armor
         )
     )
-    input("Press Enter to continue")
+    print(f"Thank you {fighter_name} the {fighter_person} for your enlistment!")
+    sleep(2.5)
     system("clear")
+    if len(fighters) < 3:
+        print(f"Till now we have {len(fighters)} heroes enlisted:")
+        for fighter in fighters:    
+            print(fighter)
+        print(f"We need {3-len(fighters)} more...")
 
+system("clear")
 print("So we have...")
 for fighter in fighters:    
     print(fighter)
