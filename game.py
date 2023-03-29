@@ -131,16 +131,20 @@ while battle == True:
     print(f"Game tun {turn}:")
     for person in fighters:
         # Character turn
+        defence_power = enemy.defend()
+        attack_power = person.attack()
         print(f"{person.name} ({person.health}hp) attack {enemy.name} with his {person.weapon.name}.")
-        enemy.health = enemy.health + enemy.defend() - person.attack()
-        print(f"{enemy.name} the Beast has now {enemy.health}")
+        print(f"{enemy.name} the Beast has now {enemy.health} (-{defence_power-attack_power})")
+        enemy.health = enemy.health + defence_power - attack_power
         sleep(0.5)
     # Boss turn
     # Boss chose one victim
     person = fighters[random.randint(0, len(fighters))]
     print(f"{enemy.name} ({enemy.health}hp) attack {person.name} with his brute force.")
-    person.health = person.health + person.defend() - enemy.attack()
-    print(f"{person.name} the {person.person} has now {person.health}")
+    defence_power = person.defend()
+    attack_power = enemy.attack()
+    print(f"{person.name} the {person.person} has now {person.health} (-{defence_power-attack_power})")
+    person.health = person.health + defence_power - attack_power
     print()
     if enemy.health <= 0:
         print("The heroes won!")
@@ -149,3 +153,5 @@ while battle == True:
         print(f"{person.name} the {person.person} is dead!")
         fighters.remove(person)
         battle = False
+    else:
+        input("Are you ready for next turn?")
