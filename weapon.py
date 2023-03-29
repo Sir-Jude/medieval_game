@@ -1,8 +1,4 @@
-from abc import ABC, abstractmethod
-import random
-
-
-class Weapon: 
+class Weapon:
     def __init__(self, name, damage, skill):
         self.name = name
         self.damage = damage
