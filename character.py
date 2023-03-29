@@ -68,10 +68,10 @@ class Character:
 
 def character_factory(character, name, weapon, armor):
     if character.lower() == "warrior":
-        return Character("warrior", name, "close", weapon_factory(weapon), armor_factory(armor), health=10)
+        return Character("warrior", name, "close", weapon_factory(weapon), armor_factory(armor))
     elif character.lower() == "magician":
-        return Character("magician", name, "magic", weapon_factory(weapon), armor_factory(armor), health=10)
+        return Character("magician", name, "magic", weapon_factory(weapon), armor_factory(armor))
     elif character.lower() == "archer":
-        return Character("archer", name, "distant", weapon_factory(weapon), armor_factory(armor), health=10)
+        return Character("archer", name, "distant", weapon_factory(weapon), armor_factory(armor))
     elif character.lower() == "smith":
-        return Character("smith", name, "close", weapon_factory(weapon), armor_factory(armor), health=10)
+        return Character("smith", name, "close", weapon_factory(weapon), armor_factory(armor))
