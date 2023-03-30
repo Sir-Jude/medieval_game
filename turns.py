@@ -23,9 +23,6 @@ class HeroTurn:
     def hero_result(self, def_power, att_power, enemy):
         for fighter in self.fighters:
             damage = self.damage_amount(def_power, att_power)
-            print(
-                f"{fighter.name} ({fighter.health}hp) attacks {enemy.name} with his {fighter.weapon.name}({att_power})."
-            )
             print(f"{fighter.name} ({fighter.health}hp) attacks {enemy.name} with his {fighter.weapon.name}({att_power}).")
             print(f"{enemy.name} the Beast lost {damage} hp, and now has {enemy.health+damage}hp left.")
             enemy.health = enemy.health + damage

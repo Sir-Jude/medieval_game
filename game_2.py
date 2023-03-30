@@ -7,8 +7,8 @@ import random
 import weapons
 import armors
 from characters import Character, character_factory
-import boss
-from turns import HeroTurn, BossTurn
+from boss import FinalBoss
+from turns import HeroTurn
 
 system("clear")
 print("""
@@ -91,7 +91,7 @@ for num in range(0, 3):
         print(f"\nWe need {3-len(fighters)} more heroes...")
 
 # The list of fighter
-enemy = boss.FinalBoss()
+enemy = FinalBoss()
 system("clear")
 print("So we have...\n")
 for fighter in fighters:    
@@ -121,7 +121,7 @@ while battle == True:
 
     # Character's turn
     hero_turn = HeroTurn(fighters)
-    hero_turn.hero_result(boss.FinalBoss().defend(), boss.FinalBoss().attack(), boss.FinalBoss())
+    hero_turn.hero_result(FinalBoss().defend(), fighter.attack(), FinalBoss())
 
     # Checking if the boss is dead.
     if enemy.health <= 0:
@@ -129,11 +129,17 @@ while battle == True:
         break
 
     print()
-    
     # Boss turn
-    boss_turn = BossTurn(fighters)
-    boss_turn.damage_amount(Character.defend(), boss.FinalBoss().attack())
-    boss_turn.boss_result(Character.defend(), Character.attack(), boss.FinalBoss())
+    fighter = fighters[random.randint(0, len(fighters)-1)] # Random victim chose 
+    def_power = fighter.defend()
+    att_power = enemy.attack()
+    if (def_power - att_power) > 0:
+            damage = 0
+    else:
+        damage = def_power - att_power
+    print(f"{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
+    print(f"{fighter.name} the {fighter.person} lost {damage} hp and now has {fighter.health+damage} hp.")
+    fighter.health = fighter.health + damage
 
     # Checking if someone is dead.
     if fighter.health <= 0:
