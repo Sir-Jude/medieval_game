@@ -157,8 +157,8 @@ while battle == True:
     att_power = enemy.attack()
     if (def_power - att_power) > 0:
             damage = 0
-        else:
-            damage = def_power - att_power
+    else:
+        damage = def_power - att_power
     print(f"\n{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
     print(f"{fighter.name} the {fighter.person} lost {damage} hp and now has {fighter.health-damage} hp.")
     fighter.health = fighter.health - damage
