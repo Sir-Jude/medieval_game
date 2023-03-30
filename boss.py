@@ -25,4 +25,4 @@ class FinalBoss:
         return defense_power
     
     def __str__(self):
-        return f"{self.name} the Beast, who has {self.health} points of health and some unexpected skills."
+        return f"{self.name} the Beast, who has {self.health} points of health and some unexpected skills. His unprenetable defense is {self.defense_points} points and attacks with {self.attack_points} points of damage... Be careful with he's critical attacks...."
