@@ -6,7 +6,7 @@ import random
 # Custom imports
 import weapons
 import armors
-from character_2 import Character, character_factory
+from characters import Character, character_factory
 import boss
 
 system("clear")
