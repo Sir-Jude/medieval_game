@@ -22,13 +22,13 @@
 ### Game 
 Is the main file that executes the game importing the classes from the other files
 
-### Character
+### Characters
 Contains the class Character is where we create our characters
 
-### Weapon
+### Weapons
 Contains the class Weapon which is a weapon factory that produces a weapon object.
 
-### Armor
+### Armors
 Contains the class Armor which is a armor factory that produces a armor object
 
 ### Markus the Beast
