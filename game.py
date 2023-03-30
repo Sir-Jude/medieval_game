@@ -148,7 +148,7 @@ while battle == True:
             damage = def_power - att_power
         print(f"{fighter.name} ({fighter.health}hp) attacks {enemy.name} with his {fighter.weapon.name}({att_power}).")
         print(f"{enemy.name} the Beast lost {damage} hp, and now has {enemy.health-damage}hp left.")
-        enemy.health = enemy.health - damage
+        enemy.health = enemy.health + damage
         sleep(0.5)
     
     # Boss turn
@@ -161,7 +161,7 @@ while battle == True:
         damage = def_power - att_power
     print(f"\n{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
     print(f"{fighter.name} the {fighter.person} lost {damage} hp and now has {fighter.health-damage} hp.")
-    fighter.health = fighter.health - damage
+    fighter.health = fighter.health + damage
     if enemy.health <= 0:
         print("The heroes won!")
         battle = False
