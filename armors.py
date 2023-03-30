@@ -1,7 +1,7 @@
 class Armor:
-    def __init__(self, name, defence, skill):
+    def __init__(self, name, defense, skill):
         self.name = name
-        self.defence = defence
+        self.defense = defense
         self.skill = skill
 
 def armor_factory(armor):

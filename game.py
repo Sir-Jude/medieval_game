@@ -1,24 +1,23 @@
+# Python imports
 from abc import ABC, abstractmethod
-import random
 from time import sleep
+from os import system
+import random
+# Custom imports
 import weapons
 import armors
 import characters
 import boss
-from os import system
-
-# giulio = characters.character_factory(fighter_person)
 
 system("clear")
 print("Welcome, heros!")
-print(
-    "You are on the quest to defeat the great and powerful Markus, the Master of Python!\n"
-)
+print("You are on the quest to defeat the great and powerful Markus, the Master of Python!")
+
 fighters = []
 # MENU
 for i in range(1, 4):
     if i == 1:
-        fighter_name = input("You, which is your name? ").title()
+        fighter_name = input("You, what is your name? ").title()
     elif i == 2:
         fighter_name = input("And you there, which is your name? ").title()
     else:
@@ -27,130 +26,138 @@ for i in range(1, 4):
     fighter_person = input(
         f"""
 And what are you {fighter_name}?
-[1] warrior
-[2] magician
-[3] archer
-[4] smith
+[1] Warrior
+[2] Magician
+[3] Archer
+[4] Smith
 -> """
     )
     if fighter_person == "1":
-        fighter_person = "warrior"
+        fighter_person = "Warrior"
     elif fighter_person == "2":
-        fighter_person = "magician"
+        fighter_person = "Magician"
     elif fighter_person == "3":
-        fighter_person = "archer"
-    else:
-        fighter_person = "smith"
+        fighter_person = "Archer"
+    elif fighter_person == "4":
+        fighter_person = "Smith"
     system("clear")
 
     fighter_weapon = input(
         f"""
 {fighter_name} the {fighter_person}, what are you going to fight with?
-[1] sword
-[2] axe
-[3] stick
-[4] wand
-[5] spear
-[6] bow
+[1] Sword
+[2] Axe
+[3] Stick
+[4] Wand
+[5] Spear
+[6] Bow
 -> """
     )
     if fighter_weapon == "1":
-        fighter_weapon = "sword"
+        fighter_weapon = "Sword"
     elif fighter_weapon == "2":
-        fighter_weapon = "axe"
+        fighter_weapon = "Axe"
     elif fighter_weapon == "3":
-        fighter_weapon = "stick"
+        fighter_weapon = "Stick"
     elif fighter_weapon == "4":
-        fighter_weapon = "wand"
+        fighter_weapon = "Wand"
     elif fighter_weapon == "5":
-        fighter_weapon = "spear"
-    else:
-        fighter_weapon = "bow"
+        fighter_weapon = "Spear"
+    elif fighter_weapon == "6":
+        fighter_weapon = "Bow"
     system("clear")
 
     fighter_armor = input(
         f"""
 {fighter_name} the {fighter_person}, you have just a {fighter_weapon}.
 How do you plan to defend yourself {fighter_name}?
-[1] cloak
-[2] helmet
-[3] round shield
-[4] roman shield
-[5] leather armor
-[6] metal armor
+[1] Cloak
+[2] Helmet
+[3] Round shield
+[4] Roman shield
+[5] Leather armor
+[6] Metal armor
 -> """
     )
     if fighter_armor == "1":
-        fighter_armor = "cloak"
+        fighter_armor = "Cloak"
     elif fighter_armor == "2":
-        fighter_armor = "helmet"
+        fighter_armor = "Helmet"
     elif fighter_armor == "3":
-        fighter_armor = "round shield"
+        fighter_armor = "Round Shield"
     elif fighter_armor == "4":
-        fighter_armor = "roman shield"
+        fighter_armor = "Roman Shield"
     elif fighter_armor == "5":
-        fighter_armor = "leather armor"
-    else:
-        fighter_armor = "metal armor"
+        fighter_armor = "Leather Armor"
+    elif fighter_armor == "6":
+        fighter_armor = "Metal Armor"
     
-    fighters.append(
-        characters.character_factory(
-            fighter_person, fighter_name, fighter_weapon, fighter_armor
-        )
-    )
+
+    fighters.append(characters.character_factory(
+            fighter_person,
+            fighter_name,
+            fighter_weapon,
+            fighter_armor
+        ))
 
     print(f"Thank you {fighter_name} the {fighter_person} for your enlistment!")
     sleep(1)
     system("clear")
     if len(fighters) < 3:
-        print(f"Till now we have {len(fighters)} heroes enlisted:")
+        print(f"Now we have {len(fighters)} heroes enlisted:\n")
         for fighter in fighters:    
             print(fighter)
-        print(f"We need {3-len(fighters)} more...")
+        print(f"\nWe need {3-len(fighters)} more heroes...")
 
-# The list of combatants
+# The list of fighter
 system("clear")
-print("So we have...")
+print("So we have...\n")
 for fighter in fighters:    
     print(fighter)
     sleep(0.5)
-enemy = boss.FinalBoss()
-print("And the powerful Markus, the Master of Python!")      
-sleep(3)
+input("\nAre you ready to meet you mortal enemy ")
+sleep(0.3)
+print("\nMarkus the Beast, Master of Python!")
+sleep(0.3)
+input("\nAre you ready to face him? ") 
 system("clear")
 
 # Arena/battle engine
+enemy = boss.FinalBoss()
 battle = True
 turn = 0
-print ("Let the fighting begin!")
+print ("Let the fighting begin!\n")
+
 while battle == True:
     if len(fighters) == 0:
-        print("All heros are dead!")
+        print("All Heroes are dead!\nMarkus the Beast kill you all!")
         break
-    input("Are you ready for next turn?")
+    input("Are you ready for next turn? ")
+
     # Game turn
     turn += 1
-    print(f"Game tun {turn}:")
-    for person in fighters:
-        # Character turn
+    print(f"\n   --------------- Round {turn}: ---------------\n")
+
+    # Character's turn
+    for fighter in fighters:
         def_power = enemy.defend()
-        att_power = person.attack()
-        print(f"{person.name} ({person.health}hp) attack {enemy.name} with his {person.weapon.name}({att_power}).")
-        print(f"{enemy.name} the Beast has now {enemy.health} {def_power-att_power} hp.")
-        enemy.health = enemy.health - def_power - att_power
+        att_power = fighter.attack()
+        print(f"{fighter.name} ({fighter.health}hp) attacks {enemy.name} with his {fighter.weapon.name}({att_power}).")
+        print(f"{enemy.name} the Beast lost {def_power-att_power} hp, and now has {enemy.health+def_power-att_power}hp left.")
+        enemy.health = enemy.health + (def_power - att_power)
         sleep(0.5)
+    
     # Boss turn
-    # Boss chose one victim
-    person = fighters[random.randint(0, len(fighters)-1)]
-    def_power = person.defend()
+    fighter = fighters[random.randint(0, len(fighters)-1)] # Random victim chose 
+    def_power = fighter.defend()
     att_power = enemy.attack()
-    print(f"{enemy.name} ({enemy.health}hp) attack {person.name} with his brute force({att_power}).")
-    print(f"{person.name} the {person.person} has now {person.health} {def_power-att_power} hp.")
-    person.health = person.health - def_power - att_power
+    print(f"\n{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
+    print(f"{fighter.name} the {fighter.person} lost {def_power-att_power} and now has {fighter.health+(def_power-att_power)}  hp.")
+    fighter.health = fighter.health - def_power - att_power
     if enemy.health <= 0:
         print("The heroes won!")
         battle = False
-    if person.health <= 0:
-        print(f"{person.name} the {person.person} is dead!")
-        fighters.remove(person)
+    if fighter.health <= 0:
+        print(f"\n{fighter.name} the {fighter.person} is dead!")
+        fighters.remove(fighter)
     print()
