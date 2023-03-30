@@ -152,7 +152,7 @@ while battle == True:
     # Checking if the boss is dead.
     if enemy.health <= 0:
         print("The heroes won!")
-        battle = False
+        break
 
     # Boss turn
     print()
