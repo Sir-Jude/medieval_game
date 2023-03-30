@@ -123,6 +123,7 @@ enemy = boss.FinalBoss()
 battle = True
 turn = 0
 print ("Let the fighting begin!\n")
+print(enemy)
 
 while battle == True:
     if len(fighters) == 0: # Sopping the game if there are no more fighters left
