@@ -10,7 +10,7 @@ from image import start, heroes_won, game_over
 
 system("clear")
 print(start)
-sleep(2.5)
+input()
 system("clear")
 print("Welcome, heros!")
 print("You are on the quest to defeat the great and powerful Markus, the Master of Python!")
@@ -30,7 +30,7 @@ for num in range(0, 3):
     system("clear")
     if len(fighters) < 3:
         print(f"Now we have {len(fighters)} heroes enlisted:\n")
-        for fighter in fighters:    
+        for fighter in fighters:  
             print(fighter)
         if len(fighters) == 2:
             print(f"\nWe need one last hero...")
@@ -45,7 +45,7 @@ for fighter in fighters:
     print(fighter)
     sleep(1)
 print("      VS\n")
-sleep(0.5)
+sleep(1)
 print(enemy)
 # input("\nAre you ready for battle? ")
 # system("clear")
@@ -54,7 +54,7 @@ print(enemy)
 battle = True
 turn = 0
 print ("\nLet the fighting begin!\n")
-sleep(1)
+input()
 system("clear")
 
 while battle == True:
@@ -69,6 +69,9 @@ while battle == True:
 
     # Checking if the boss is dead.
     if enemy.health <= 0:
+        print("\nMarkus the Beast is dead!\nThe heroes has won!")
+        input()
+        system("clear")
         print(heroes_won)
         break
 
@@ -85,8 +88,9 @@ while battle == True:
         print()
     
     if len(fighters) == 0: # Sopping the game if there are no more fighters left
-        print("All Heroes are dead!\nMarkus the Beast kill you all!")
-        sleep(2.5)
+        print("\nAll Heroes are dead!\nMarkus the Beast has killed you all!")
+        input()
+        system("clear")
         print(game_over)
         input()
         break
