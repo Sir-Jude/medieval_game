@@ -26,13 +26,13 @@ class Character:
         if num == 1:
             self.name = input("You, what is your name? ").title()
         elif num == 2:
-            self.name = input("And you there, which is your name? ").title()
+            self.name = input("You there, which is your name? ").title()
         elif num == 3:
             self.name = input("And finally you, how are you known? ").title()
 
     def get_class(self):
         personality = input(
-            f"""And what are you {self.name}?
+            f"""\nAnd what are you, {self.name}?
 [1] Warrior
 [2] Magician
 [3] Archer
@@ -54,7 +54,7 @@ class Character:
 
     def get_weapon(self):
         fighter_weapon = input(
-            f"""Ok, {self.name} the {self.person}, what are you going to fight with?
+            f"""\nOk, {self.name} the {self.person}, what are you going to fight with?
 [1] Sword
 [2] Axe
 [3] Stick
@@ -80,7 +80,7 @@ class Character:
     
     def get_armor(self):
         fighter_armor = input(
-        f"""And how do you plan to defend yourself?
+        f"""\nAnd how do you plan to defend yourself?
 [1] Cloak
 [2] Helmet
 [3] Round shield
