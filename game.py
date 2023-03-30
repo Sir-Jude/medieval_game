@@ -129,9 +129,10 @@ turn = 0
 print ("Let the fighting begin!\n")
 
 while battle == True:
-    if len(fighters) == 0:
+    if len(fighters) == 0: # Sopping the game if there are no more fighters left
         print("All Heroes are dead!\nMarkus the Beast kill you all!")
         break
+
     input("Are you ready for next turn? ")
 
     # Game turn
@@ -162,10 +163,12 @@ while battle == True:
     print(f"\n{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
     print(f"{fighter.name} the {fighter.person} lost {damage} hp and now has {fighter.health+damage} hp.")
     fighter.health = fighter.health + damage
+
+    # Checking if someone is dead.
     if enemy.health <= 0:
         print("The heroes won!")
         battle = False
     if fighter.health <= 0:
         print(f"\n{fighter.name} the {fighter.person} is dead!")
-        fighters.remove(fighter)
+        fighters.remove(fighter) # Removing the dead fighter from the list
     print()
