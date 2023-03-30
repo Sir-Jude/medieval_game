@@ -147,7 +147,12 @@ while battle == True:
         print(f"{enemy.name} the Beast lost {damage} hp, and now has {enemy.health+damage}hp left.")
         enemy.health = enemy.health + damage
         sleep(0.5)
-    
+
+    # Checking if the boss is dead.
+    if enemy.health <= 0:
+        print("The heroes won!")
+        battle = False
+
     # Boss turn
     print()
     fighter = fighters[random.randint(0, len(fighters)-1)] # Random victim chose 
@@ -162,9 +167,6 @@ while battle == True:
     fighter.health = fighter.health + damage
 
     # Checking if someone is dead.
-    if enemy.health <= 0:
-        print("The heroes won!")
-        battle = False
     if fighter.health <= 0:
         print(f"\n{fighter.name} the {fighter.person} is dead!")
         fighters.remove(fighter) # Removing the dead fighter from the list
