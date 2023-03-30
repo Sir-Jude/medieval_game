@@ -8,7 +8,7 @@ import weapons
 import armors
 from characters import Character, character_factory
 from boss import FinalBoss
-from turns import HeroTurn
+from turns import HeroTurn, BossTurn
 
 system("clear")
 print("""
@@ -121,7 +121,8 @@ while battle == True:
 
     # Character's turn
     hero_turn = HeroTurn(fighters)
-    hero_turn.hero_result(FinalBoss().defend(), fighter.attack(), FinalBoss())
+    for fighter in fighters:
+        hero_turn.hero_result(enemy.defend(), fighter.attack(), enemy, fighter)
 
     # Checking if the boss is dead.
     if enemy.health <= 0:
@@ -130,16 +131,9 @@ while battle == True:
 
     print()
     # Boss turn
-    fighter = fighters[random.randint(0, len(fighters)-1)] # Random victim chose 
-    def_power = fighter.defend()
-    att_power = enemy.attack()
-    if (def_power - att_power) > 0:
-            damage = 0
-    else:
-        damage = def_power - att_power
-    print(f"{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
-    print(f"{fighter.name} the {fighter.person} lost {damage} hp and now has {fighter.health+damage} hp.")
-    fighter.health = fighter.health + damage
+    print()
+    boss_turn = BossTurn(fighters)
+    boss_turn.boss_result(fighter.defend(), enemy.attack(), enemy)
 
     # Checking if someone is dead.
     if fighter.health <= 0:
