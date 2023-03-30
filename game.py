@@ -149,6 +149,7 @@ while battle == True:
         sleep(0.5)
     
     # Boss turn
+    print()
     fighter = fighters[random.randint(0, len(fighters)-1)] # Random victim chose 
     def_power = fighter.defend()
     att_power = enemy.attack()
@@ -156,7 +157,7 @@ while battle == True:
             damage = 0
     else:
         damage = def_power - att_power
-    print(f"\n{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
+    print(f"{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
     print(f"{fighter.name} the {fighter.person} lost {damage} hp and now has {fighter.health+damage} hp.")
     fighter.health = fighter.health + damage
 
