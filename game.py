@@ -142,18 +142,26 @@ while battle == True:
     for fighter in fighters:
         def_power = enemy.defend()
         att_power = fighter.attack()
+        if (def_power - att_power) > 0:
+            damage = 0
+        else:
+            damage = def_power - att_power
         print(f"{fighter.name} ({fighter.health}hp) attacks {enemy.name} with his {fighter.weapon.name}({att_power}).")
-        print(f"{enemy.name} the Beast lost {def_power-att_power} hp, and now has {enemy.health+def_power-att_power}hp left.")
-        enemy.health = enemy.health + (def_power - att_power)
+        print(f"{enemy.name} the Beast lost {damage} hp, and now has {enemy.health-damage}hp left.")
+        enemy.health = enemy.health - damage
         sleep(0.5)
     
     # Boss turn
     fighter = fighters[random.randint(0, len(fighters)-1)] # Random victim chose 
     def_power = fighter.defend()
     att_power = enemy.attack()
+    if (def_power - att_power) > 0:
+            damage = 0
+        else:
+            damage = def_power - att_power
     print(f"\n{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
-    print(f"{fighter.name} the {fighter.person} lost {def_power-att_power} and now has {fighter.health+(def_power-att_power)}  hp.")
-    fighter.health = fighter.health - def_power - att_power
+    print(f"{fighter.name} the {fighter.person} lost {damage} hp and now has {fighter.health-damage} hp.")
+    fighter.health = fighter.health - damage
     if enemy.health <= 0:
         print("The heroes won!")
         battle = False
