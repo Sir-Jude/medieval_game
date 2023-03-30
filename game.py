@@ -6,7 +6,7 @@ from characters import character_factory
 from boss import FinalBoss
 from turns import HeroTurn, BossTurn
 #image
-from image import start
+from image import start, markus_won, heroes_won
 
 system("clear")
 print(start)
@@ -58,6 +58,7 @@ sleep(1.5)
 
 while battle == True:
     if len(fighters) == 0: # Sopping the game if there are no more fighters left
+        print(markus_won)
         print("All Heroes are dead!\nMarkus the Beast kill you all!")
         break
 
@@ -74,6 +75,7 @@ while battle == True:
 
     # Checking if the boss is dead.
     if enemy.health <= 0:
+        print(heroes_won)
         print("The heroes won!")
         break
 
