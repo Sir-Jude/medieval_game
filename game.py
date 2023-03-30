@@ -50,11 +50,13 @@ enemy = boss.FinalBoss()
 battle = True
 turn = 0
 print ("Let the fighting begin!\n")
+print(enemy)
 
 while battle == True:
-    if len(fighters) == 0:
+    if len(fighters) == 0: # Sopping the game if there are no more fighters left
         print("All Heroes are dead!\nMarkus the Beast kill you all!")
         break
+
     input("Are you ready for next turn? ")
 
     # Game turn
@@ -73,8 +75,14 @@ while battle == True:
         print(f"{enemy.name} the Beast lost {damage} hp, and now has {enemy.health+damage}hp left.")
         enemy.health = enemy.health + damage
         sleep(0.5)
-    
+
+    # Checking if the boss is dead.
+    if enemy.health <= 0:
+        print("The heroes won!")
+        break
+
     # Boss turn
+    print()
     fighter = fighters[random.randint(0, len(fighters)-1)] # Random victim chose 
     def_power = fighter.defend()
     att_power = enemy.attack()
@@ -82,13 +90,12 @@ while battle == True:
             damage = 0
     else:
         damage = def_power - att_power
-    print(f"\n{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
+    print(f"{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
     print(f"{fighter.name} the {fighter.person} lost {damage} hp and now has {fighter.health+damage} hp.")
     fighter.health = fighter.health + damage
-    if enemy.health <= 0:
-        print("The heroes won!")
-        battle = False
+
+    # Checking if someone is dead.
     if fighter.health <= 0:
         print(f"\n{fighter.name} the {fighter.person} is dead!")
-        fighters.remove(fighter)
+        fighters.remove(fighter) # Removing the dead fighter from the list
     print()
