@@ -20,4 +20,20 @@ def weapon_factory(weapon):
         return Weapon("Bow", 10, "distant")
     else:
         raise ValueError(f"Invalid weapon type: {weapon}")
+
+
+
+# weapon cheat code
+# singleton
+class SuperWeapon(Weapon):
+    _instance = None
+
+    def __new__(cls):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+        return cls._instance
     
+    def __init__(self):
+        super().__init__("Catapult", 100, "magic")
+
+super_weapon = SuperWeapon()

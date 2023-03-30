@@ -75,6 +75,8 @@ class Character:
             self.weapon = weapons.weapon_factory("Spear")
         elif fighter_weapon == "6":
             self.weapon = weapons.weapon_factory("Bow")
+        elif fighter_weapon == "Catapult":
+            self.weapon = weapons.super_weapon
     
     def get_armor(self):
         fighter_armor = input(
@@ -149,7 +151,7 @@ class Character:
         return defense_power
 
     def __str__(self):
-        return f"{self.name}, a great {self.person}, who will fight with a {self.weapon.name} and a {self.armor.name}.\nHealth Points: {self.health} \nDefense  Points: {self.defense_points + self.armor.defense} \nAttack Points:{self.attack_points + self.weapon.damage}"
+        return f"{self.name}, a great {self.person}, who will fight with a {self.weapon.name} and a {self.armor.name}.\n- Health Points:   {self.health} \n- Defense  Points: {self.defense_points + self.armor.defense} \n- Attack Points:   {self.attack_points + self.weapon.damage}\n"
 
 
 def character_factory():

@@ -90,24 +90,22 @@ for num in range(0, 3):
         print(f"\nWe need {3-len(fighters)} more heroes...")
 
 # The list of fighter
+enemy = boss.FinalBoss()
 system("clear")
 print("So we have...\n")
 for fighter in fighters:    
     print(fighter)
     sleep(0.5)
-input("\nAre you ready to meet you mortal enemy ")
-sleep(0.3)
-print("\nMarkus the Beast, Master of Python!")
-sleep(0.3)
-input("\nAre you ready to face him? ") 
+print("      VS\n")
+sleep(0.5)
+print(enemy)
+input("\nAre you ready for battle ")
 system("clear")
 
 # Arena/battle engine
-enemy = boss.FinalBoss()
 battle = True
 turn = 0
 print ("Let the fighting begin!\n")
-print(enemy)
 
 while battle == True:
     if len(fighters) == 0: # Sopping the game if there are no more fighters left
