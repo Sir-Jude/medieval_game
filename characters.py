@@ -5,7 +5,7 @@ import armors
 
 
 class Character:
-    def __init__(self, person, name, skill, weapon=None, armor=None, health=10):
+    def __init__(self, person, name, skill, weapon=None, armor=None, health=20):
         self.person = person
         self.name = name
         self.skill = skill
