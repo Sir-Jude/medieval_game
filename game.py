@@ -115,11 +115,7 @@ print("So we have...\n")
 for fighter in fighters:    
     print(fighter)
     sleep(0.5)
-input("\nAre you ready to meet you mortal enemy ")
-sleep(0.3)
-print("\nMarkus the Beast, Master of Python!")
-sleep(0.3)
-input("\nAre you ready to face him? ") 
+input("\nAre you ready to face Markus the Beast, Master of Python? ") 
 system("clear")
 
 # Arena/battle engine
