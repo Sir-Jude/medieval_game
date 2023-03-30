@@ -1,12 +1,8 @@
 # Python imports
-from abc import ABC, abstractmethod
 from time import sleep
 from os import system
-import random
 # Custom imports
-import weapons
-import armors
-from characters import Character, character_factory
+from characters import character_factory
 from boss import FinalBoss
 from turns import HeroTurn, BossTurn
 

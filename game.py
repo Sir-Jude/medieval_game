@@ -1,10 +1,10 @@
 # Python imports
 from time import sleep
 from os import system
-import random
 # Custom imports
 from characters import character_factory
 from boss import FinalBoss
+from turns import HeroTurn, BossTurn
 
 system("clear")
 print("""
@@ -116,38 +116,23 @@ while battle == True:
     print(f"\n   --------------- Round {turn}: ---------------\n")
 
     # Character's turn
+    hero_turn = HeroTurn(fighters)
     for fighter in fighters:
-        def_power = enemy.defend()
-        att_power = fighter.attack()
-        if (def_power - att_power) > 0:
-            damage = 0
-        else:
-            damage = def_power - att_power
-        print(f"{fighter.name} ({fighter.health}hp) attacks {enemy.name} with his {fighter.weapon.name}({att_power}).")
-        print(f"{enemy.name} the Beast lost {damage} hp, and now has {enemy.health+damage}hp left.")
-        enemy.health = enemy.health + damage
-        sleep(0.5)
+        hero_turn.hero_result(enemy.defend(), fighter.attack(), enemy, fighter)
 
     # Checking if the boss is dead.
     if enemy.health <= 0:
         print("The heroes won!")
         break
 
-    # Boss turn
     print()
-    fighter = fighters[random.randint(0, len(fighters)-1)] # Random victim chose 
-    def_power = fighter.defend()
-    att_power = enemy.attack()
-    if (def_power - att_power) > 0:
-            damage = 0
-    else:
-        damage = def_power - att_power
-    print(f"{enemy.name} ({enemy.health}hp) attacks {fighter.name} with his Krav Maga and brute force ({att_power}).")
-    print(f"{fighter.name} the {fighter.person} lost {damage} hp and now has {fighter.health+damage} hp.")
-    fighter.health = fighter.health + damage
+    # Boss turn
+    boss_turn = BossTurn(fighters)
+    boss_turn.boss_result(fighter.defend(), enemy.attack(), enemy)
 
     # Checking if someone is dead.
-    if fighter.health <= 0:
-        print(f"\n{fighter.name} the {fighter.person} is dead!")
-        fighters.remove(fighter) # Removing the dead fighter from the list
-    print()
+    for fighter in fighters:
+        if fighter.health <= 0:
+            print(f"\n{fighter.name} the {fighter.person} is dead!")
+            fighters.remove(fighter) # Removing the dead fighter from the list
+        print()
