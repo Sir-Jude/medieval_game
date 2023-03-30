@@ -5,15 +5,15 @@ import armors
 
 
 class Character:
-    def __init__(self, person, name, skill, weapon=None, armor=None, health=10):
+    def __init__(self, person, name, skill, weapon=None, armor=None, health=20):
         self.person = person
         self.name = name
         self.skill = skill
         self.health = health
         self.weapon = weapon
         self.armor = armor
-        self.defense_points = 10
-        self.attack_points = 10
+        self.defense_points = 20
+        self.attack_points = 20
         
 
     def attack(self):
