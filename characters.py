@@ -12,8 +12,8 @@ class Character:
         self.health = health
         self.weapon = weapon
         self.armor = armor
-        self.defense_points = 10
-        self.attack_points = 10
+        self.defense_points = 20
+        self.attack_points = 20
         
 
     def attack(self):
