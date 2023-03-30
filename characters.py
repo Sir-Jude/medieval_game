@@ -5,15 +5,15 @@ import armors
 
 
 class Character:
-    def __init__(self, person, name, skill, weapon=None, armor=None, health=10):
+    def __init__(self, person, name, skill, weapon=None, armor=None, health=20):
         self.person = person
         self.name = name
         self.skill = skill
         self.health = health
         self.weapon = weapon
         self.armor = armor
-        self.defense_points = 10
-        self.attack_points = 10
+        self.defense_points = 20
+        self.attack_points = 20
         
 
     def attack(self):
@@ -65,7 +65,7 @@ class Character:
         return defense_power
 
     def __str__(self):
-        return f"{self.name}, a great {self.person}, who will fight with a {self.weapon.name} and a {self.armor.name}."
+        return f"{self.name}, a great {self.person}, who will fight with a {self.weapon.name} and a {self.armor.name}.\nHealth Points: {self.health} \nDefense  Points: {self.defense_points + self.armor.defense} \nAttack Points:{self.attack_points + self.weapon.damage}"
 
 
 def character_factory(character, name, weapon, armor):
@@ -77,3 +77,4 @@ def character_factory(character, name, weapon, armor):
         return Character("archer", name, "distant", weapons.weapon_factory(weapon), armors.armor_factory(armor))
     elif character.lower() == "smith":
         return Character("smith", name, "close", weapons.weapon_factory(weapon), armors.armor_factory(armor))
+    
