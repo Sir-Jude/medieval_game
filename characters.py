@@ -1,20 +1,104 @@
+# Python imports
+from abc import ABC, abstractmethod
+from time import sleep
+from os import system
 import random
+
+# Custom imports
 import weapons
 import armors
-
+import boss
 
 
 class Character:
-    def __init__(self, person, name, skill, weapon=None, armor=None, health=20):
+    def __init__(self, person=None, name=None, skill=None, weapon=None, armor=None, health=10):
         self.person = person
         self.name = name
         self.skill = skill
         self.health = health
         self.weapon = weapon
         self.armor = armor
-        self.defense_points = 20
-        self.attack_points = 20
-        
+        self.defense_points = 10
+        self.attack_points = 10
+
+    def get_name(self, num):
+        # Name the character
+        if num == 1:
+            self.name = input("You, what is your name? ").title()
+        elif num == 2:
+            self.name = input("And you there, which is your name? ").title()
+        elif num == 3:
+            self.name = input("And finally you, how are you known? ").title()
+
+    def get_class(self):
+        personality = input(
+            f"""And what are you {self.name}?
+[1] Warrior
+[2] Magician
+[3] Archer
+[4] Smith
+-> """
+        )
+        if personality == "1":
+            self.person = "Warrior"
+            self.skill = "close"
+        elif personality == "2":
+            self.person = "Magician"
+            self.skill = "magic"
+        elif personality == "3":
+            self.person = "Archer"
+            self.skill = "distant"
+        elif personality == "4":
+            self.person = "Smith"
+            self.skill = "close"
+
+    def get_weapon(self):
+        fighter_weapon = input(
+            f"""Ok, {self.name} the {self.person}, what are you going to fight with?
+[1] Sword
+[2] Axe
+[3] Stick
+[4] Wand
+[5] Spear
+[6] Bow
+-> """
+        )
+        if fighter_weapon == "1":
+            self.weapon = weapons.weapon_factory("Sword")
+        elif fighter_weapon == "2":
+            self.weapon = weapons.weapon_factory("Axe")
+        elif fighter_weapon == "3":
+            self.weapon = weapons.weapon_factory("Stick")
+        elif fighter_weapon == "4":
+            self.weapon = weapons.weapon_factory("Wand")
+        elif fighter_weapon == "5":
+            self.weapon = weapons.weapon_factory("Spear")
+        elif fighter_weapon == "6":
+            self.weapon = weapons.weapon_factory("Bow")
+    
+    def get_armor(self):
+        fighter_armor = input(
+        f"""And how do you plan to defend yourself?
+[1] Cloak
+[2] Helmet
+[3] Round shield
+[4] Roman shield
+[5] Leather armor
+[6] Metal armor
+-> """
+    )
+        if fighter_armor == "1":
+            self.armor = armors.armor_factory("Cloak")
+        elif fighter_armor == "2":
+            self.armor = armors.armor_factory("Helmet")
+        elif fighter_armor == "3":
+            self.armor = armors.armor_factory("Round Shield")
+        elif fighter_armor == "4":
+            self.armor = armors.armor_factory("Roman Shield")
+        elif fighter_armor == "5":
+            self.armor = armors.armor_factory("Leather Armor")
+        elif fighter_armor == "6":
+            self.armor = armors.armor_factory("Metal Armor")
 
     def attack(self):
         self.distraction = random.randint(0, 11)
@@ -68,13 +152,5 @@ class Character:
         return f"{self.name}, a great {self.person}, who will fight with a {self.weapon.name} and a {self.armor.name}.\nHealth Points: {self.health} \nDefense  Points: {self.defense_points + self.armor.defense} \nAttack Points:{self.attack_points + self.weapon.damage}"
 
 
-def character_factory(character, name, weapon, armor):
-    if character.lower() == "warrior":
-        return Character("warrior", name, "close", weapons.weapon_factory(weapon), armors.armor_factory(armor))
-    elif character.lower() == "magician":
-        return Character("magician", name, "magic", weapons.weapon_factory(weapon), armors.armor_factory(armor))
-    elif character.lower() == "archer":
-        return Character("archer", name, "distant", weapons.weapon_factory(weapon), armors.armor_factory(armor))
-    elif character.lower() == "smith":
-        return Character("smith", name, "close", weapons.weapon_factory(weapon), armors.armor_factory(armor))
-    
+def character_factory():
+    return Character()
