@@ -1,13 +1,10 @@
 # Python imports
-from abc import ABC, abstractmethod
 from time import sleep
 from os import system
 import random
 # Custom imports
-import weapons
-import armors
-from characters import Character, character_factory
-import boss
+from characters import character_factory
+from boss import FinalBoss
 
 system("clear")
 print("""
@@ -90,7 +87,7 @@ for num in range(0, 3):
         print(f"\nWe need {3-len(fighters)} more heroes...")
 
 # The list of fighter
-enemy = boss.FinalBoss()
+enemy = FinalBoss()
 system("clear")
 print("So we have...\n")
 for fighter in fighters:    
