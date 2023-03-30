@@ -39,7 +39,7 @@ print("So we have...\n")
 for fighter in fighters:    
     print(fighter)
     sleep(0.5)
-print("\n      VS\n")
+print("      VS\n")
 sleep(0.5)
 print(enemy)
 input("\nAre you ready for battle ")
