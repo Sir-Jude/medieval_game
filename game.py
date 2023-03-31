@@ -53,11 +53,11 @@ print(enemy)
 # Arena/battle engine
 battle = True
 turn = 0
-player.stop()
 print ("\nLet the fighting begin!\n")
+input("ENTER ")
+player.stop()
 player = vlc.MediaPlayer("battle.mp3")
 player.play()
-input("ENTER ")
 system("clear")
 
 while battle == True:
