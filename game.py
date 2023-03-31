@@ -68,16 +68,15 @@ while battle == True:
     print(f"\n   --------------- Round {turn}: ---------------\n")
 
     # Character's turn
-    hero_turn = HeroTurn(fighters)
     for fighter in fighters:
         print(f"[{fighters.index(fighter)+1}] {fighter.name} - {fighter.health}hp")
     while True:
-        fighter_choice = int(input("-> "))
-        if fighter_choice in [i for i in range(1,len(fighters)+1)]:
+        fighter_choice = input("-> ")
+        if fighter_choice != "" and int(fighter_choice) in [i for i in range(1,len(fighters)+1)]:
             fighter = fighters[fighter_choice-1]
             break
         else:
-            print(f"You must enter a number between 1 and {len(fighters)+1}")
+            print(f"You must enter a number between 1 and {len(fighters)}")
     hero_turn = HeroTurn(fighter, enemy)
     hero_turn.hero_result()
 
@@ -92,8 +91,8 @@ while battle == True:
 
     print()
     # Boss turn
-    boss_turn = BossTurn(fighters)
-    boss_turn.boss_result(fighter.defend(), enemy.attack(), enemy)
+    boss_turn = BossTurn(fighters, enemy)
+    boss_turn.boss_result()
 
     # Checking if someone is dead.
     for fighter in fighters:
