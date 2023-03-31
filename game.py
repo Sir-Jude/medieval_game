@@ -73,7 +73,7 @@ while battle == True:
     while True:
         fighter_choice = input("-> ")
         if fighter_choice != "" and int(fighter_choice) in [i for i in range(1,len(fighters)+1)]:
-            fighter = fighters[fighter_choice-1]
+            fighter = fighters[int(fighter_choice)-1]
             break
         else:
             print(f"You must enter a number between 1 and {len(fighters)}")
