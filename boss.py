@@ -21,7 +21,7 @@ class FinalBoss:
         # Final boss can restore his health sometimes
         if random.randint(0, 20) == 0:
             self.health += 50
-            print(f"{self.name} increased his health(+50)!!")
+            print(f"{self.name} has drunken a magical potion and increased his health(+50)!!")
         return defense_power
     
     def __str__(self):
@@ -30,5 +30,5 @@ class FinalBoss:
 
 Who has {self.health} points of health and some unexpected skills.
 His unprenetable defense is {self.defense_points} points and attacks with {self.attack_points} points of damage.
-Be careful of he's critical attacks....
+Be careful of his critical attacks....
     """
