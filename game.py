@@ -24,11 +24,11 @@ for num in range(0, 3):
     fighters[num].get_weapon()
     fighters[num].get_armor()
 
-    print(f"\nThank you {fighters[num].name} the {fighters[num].person} for your enlistment!")
+    print(f"\nThank you {fighters[num].name} the {fighters[num].person} for your bravery!")
     sleep(1)
     system("clear")
     if len(fighters) < 3:
-        print(f"Now we have {len(fighters)} heroes enlisted:\n")
+        print(f"Ok, now we have {len(fighters)} heroes enlisted:\n")
         for fighter in fighters:  
             print(fighter)
         if len(fighters) == 2:

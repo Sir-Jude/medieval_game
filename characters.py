@@ -41,25 +41,26 @@ class Character:
 -> """
         )
             if skill_type in ["1", "2", "3", "4"]:
+                if skill_type == "1":
+                    self.person = "Warrior"
+                    self.skill = "close"
+                elif skill_type == "2":
+                    self.person = "Magician"
+                    self.skill = "magic"
+                elif skill_type == "3":
+                    self.person = "Archer"
+                    self.skill = "distant"
+                elif skill_type == "4":
+                    self.person = "Smith"
+                    self.skill = "close"
                 break
             else:
                 print("You must enter a number between 1 and 4")
-            if skill_type == "1":
-                self.person = "Warrior"
-                self.skill = "close"
-            elif skill_type == "2":
-                self.person = "Magician"
-                self.skill = "magic"
-            elif skill_type == "3":
-                self.person = "Archer"
-                self.skill = "distant"
-            elif skill_type == "4":
-                self.person = "Smith"
-                self.skill = "close"
 
     def get_weapon(self):
-        fighter_weapon = input(
-            f"""\nOk, {self.name} the {self.person}, what are you going to fight with?
+        while True:
+            fighter_weapon = input(
+                f"""\nOk, {self.name} the {self.person}, what are you going to fight with?
 [1] Sword
 [2] Axe
 [3] Stick
@@ -68,24 +69,30 @@ class Character:
 [6] Bow
 -> """
         )
-        if fighter_weapon == "1":
-            self.weapon = weapons.weapon_factory("Sword")
-        elif fighter_weapon == "2":
-            self.weapon = weapons.weapon_factory("Axe")
-        elif fighter_weapon == "3":
-            self.weapon = weapons.weapon_factory("Stick")
-        elif fighter_weapon == "4":
-            self.weapon = weapons.weapon_factory("Wand")
-        elif fighter_weapon == "5":
-            self.weapon = weapons.weapon_factory("Spear")
-        elif fighter_weapon == "6":
-            self.weapon = weapons.weapon_factory("Bow")
-        elif fighter_weapon == "Catapult":
-            self.weapon = weapons.super_weapon
+            if fighter_weapon in ["1", "2", "3", "4", "5", "6", "Catapult"]:
+            
+                if fighter_weapon == "1":
+                    self.weapon = weapons.weapon_factory("Sword")
+                elif fighter_weapon == "2":
+                    self.weapon = weapons.weapon_factory("Axe")
+                elif fighter_weapon == "3":
+                    self.weapon = weapons.weapon_factory("Stick")
+                elif fighter_weapon == "4":
+                    self.weapon = weapons.weapon_factory("Wand")
+                elif fighter_weapon == "5":
+                    self.weapon = weapons.weapon_factory("Spear")
+                elif fighter_weapon == "6":
+                    self.weapon = weapons.weapon_factory("Bow")
+                elif fighter_weapon == "Catapult":
+                    self.weapon = weapons.super_weapon
+                break
+            else:
+                print("You must enter a number between 1 and 6")
     
     def get_armor(self):
-        fighter_armor = input(
-        f"""\nAnd how do you plan to defend yourself?
+        while True:
+            fighter_armor = input(
+            f"""\nAnd how do you plan to defend yourself?
 [1] Cloak
 [2] Helmet
 [3] Round shield
@@ -94,19 +101,22 @@ class Character:
 [6] Metal armor
 -> """
     )
-        if fighter_armor == "1":
-            self.armor = armors.armor_factory("Cloak")
-        elif fighter_armor == "2":
-            self.armor = armors.armor_factory("Helmet")
-        elif fighter_armor == "3":
-            self.armor = armors.armor_factory("Round Shield")
-        elif fighter_armor == "4":
-            self.armor = armors.armor_factory("Roman Shield")
-        elif fighter_armor == "5":
-            self.armor = armors.armor_factory("Leather Armor")
-        elif fighter_armor == "6":
-            self.armor = armors.armor_factory("Metal Armor")
-
+            if fighter_armor in ["1", "2", "3", "4", "5", "6", "Catapult"]:
+                if fighter_armor == "1":
+                    self.armor = armors.armor_factory("Cloak")
+                elif fighter_armor == "2":
+                    self.armor = armors.armor_factory("Helmet")
+                elif fighter_armor == "3":
+                    self.armor = armors.armor_factory("Round Shield")
+                elif fighter_armor == "4":
+                    self.armor = armors.armor_factory("Roman Shield")
+                elif fighter_armor == "5":
+                    self.armor = armors.armor_factory("Leather Armor")
+                elif fighter_armor == "6":
+                    self.armor = armors.armor_factory("Metal Armor")
+                break
+            else:
+                print("You must enter a number between 1 and 6")
     def attack(self):
         self.distraction = random.randint(0, 11)
         # distraction can take up to 10 points from attack_power
