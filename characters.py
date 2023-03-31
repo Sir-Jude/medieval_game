@@ -122,20 +122,20 @@ class Character:
         # distraction can take up to 10 points from attack_power
         if self.weapon:
             if self.weapon.skill == self.skill:
-                attack_power = self.attack_points + self.weapon.damage - self.distraction + 5
-                # a proper weapon can add up to 5 to attack_power
+                attack_power = self.attack_points + self.weapon.damage - self.distraction + 10
+                # a proper weapon can add up to 10 to attack_power
             elif self.weapon.skill == "close" and self.skill == "distant":
-                attack_power = self.attack_points + self.weapon.damage - self.distraction - 5
-                # a totally wrong weapon can take up to 5 points from attack_power
+                attack_power = self.attack_points + self.weapon.damage - self.distraction - 10
+                # a totally wrong weapon can take up to 10 points from attack_power
             elif self.weapon.skill == "distant" and self.skill == "close":
-                attack_power = self.attack_points + self.weapon.damage - self.distraction - 5
-                # a totally wrong weapon can take up to 5 points from attack_power
+                attack_power = self.attack_points + self.weapon.damage - self.distraction - 10
+                # a totally wrong weapon can take up to 10 points from attack_power
             elif self.weapon.skill == "distant" and self.skill == "magic":
-                attack_power = self.attack_points + self.weapon.damage - self.distraction -2
-                # other weapons can take up to 2 points from attack_power
+                attack_power = self.attack_points + self.weapon.damage - self.distraction - 5
+                # other weapons can take up to 5 points from attack_power
             elif self.weapon.skill == "magic" and self.skill == "distant":
-                attack_power = self.attack_points + self.weapon.damage - self.distraction - 2
-                # other weapons can take up to 2 points from attack_power
+                attack_power = self.attack_points + self.weapon.damage - self.distraction - 5
+                # other weapons can take up to 5 points from attack_power
             else:
                 attack_power = self.attack_points + self.weapon.damage - self.distraction
                 # this is just a neutral situation
@@ -146,20 +146,20 @@ class Character:
         # distraction can take up to 10 points from defense_power
         if self.armor:
             if self.armor.skill == self.skill:
-                defense_power = self.defense_points + self.armor.defense - self.distraction + 5
-                # a proper armor can add up to 5 to defense_power
+                defense_power = self.defense_points + self.armor.defense - self.distraction + 10
+                # a proper armor can add up to 10 to defense_power
             elif self.armor.skill == "close" and self.skill == "distant":
-                defense_power = self.defense_points + self.armor.defense - self.distraction - 5
-                # a totally wrong armor can take up to 5 points from defense_power
+                defense_power = self.defense_points + self.armor.defense - self.distraction - 10
+                # a totally wrong armor can take up to 10 points from defense_power
             elif self.armor.skill == "distant" and self.skill == "close":
-                defense_power = self.defense_points + self.armor.defense - self.distraction - 5
-                # a totally wrong armor can take up to 5 points from defense_power
+                defense_power = self.defense_points + self.armor.defense - self.distraction - 10
+                # a totally wrong armor can take up to 10 points from defense_power
             elif self.armor.skill == "distant" and self.skill == "magic":
-                defense_power = self.defense_points + self.armor.defense - self.distraction - 2
-                # other armor can take up to 2 points from defense_power
+                defense_power = self.defense_points + self.armor.defense - self.distraction - 5
+                # other armor can take up to 5 points from defense_power
             elif self.armor.skill == "magic" and self.skill == "distant":
-                defense_power = self.defense_points + self.armor.defense - self.distraction - 2
-                # other armor can take up to 2 points from defense_power
+                defense_power = self.defense_points + self.armor.defense - self.distraction - 5
+                # other armor can take up to 5 points from defense_power
             else:
                 defense_power = self.defense_points + self.armor.defense - self.distraction
                 # this is just a neutral situation
