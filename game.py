@@ -66,9 +66,18 @@ while battle == True:
     print(f"\n   --------------- Round {turn}: ---------------\n")
 
     # Character's turn
-    hero_turn = HeroTurn(fighters)
+    print("Chose which one will attack Markus:")
     for fighter in fighters:
-        hero_turn.hero_result(enemy.defend(), fighter.attack(), enemy, fighter)
+        print(f"[{fighters.index(fighter)+1}] {fighter.name}")
+    while True:
+        fighter_choice = input("-> ")
+        if fighter_choice in ["1", "2", "3"]:
+            fighter = fighters[int(fighter_choice)-1]
+            break
+        else:
+            print("You must enter a number between 1 and 3")
+    hero_turn = HeroTurn(fighter, enemy)
+    hero_turn.hero_result()
 
     # Checking if the boss is dead.
     if enemy.health <= 0:
@@ -81,8 +90,8 @@ while battle == True:
 
     print()
     # Boss turn
-    boss_turn = BossTurn(fighters)
-    boss_turn.boss_result(fighter.defend(), enemy.attack(), enemy)
+    boss_turn = BossTurn(fighters, enemy)
+    boss_turn.boss_result()
 
     # Checking if someone is dead.
     for fighter in fighters:
