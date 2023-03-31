@@ -39,7 +39,7 @@ for num in range(0, 3):
             print(f"\nWe need one last hero...")
         else:
             print(f"\nWe need {3-len(fighters)} more heroes...")
-stop()
+
 # The list of fighter
 enemy = FinalBoss()
 system("clear")

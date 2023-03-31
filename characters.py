@@ -21,14 +21,22 @@ class Character:
         self.defense_points = 20
         self.attack_points = 20
 
+    def get_valid_name(self, prompt):
+        while True:
+                name = input(prompt).title()
+                if name.isalpha() and len(name) >= 2:
+                    return name
+                else:
+                    print("Please enter a name using only alphabetical characters and is at least 3 characters long.")
+    
     def get_name(self, num):
         # Name the character
         if num == 1:
-            self.name = input("You, what is your name? ").title()
+            self.name = self.get_valid_name("You, what is your name? ")
         elif num == 2:
-            self.name = input("You there, which is your name? ").title()
+            self.name = self.get_valid_name("You there, which is your name? ")
         elif num == 3:
-            self.name = input("And finally you, how are you known? ").title()
+            self.name = self.get_valid_name("And finally you, how are you known? ")
 
     def get_class(self):
         while True: # Error checking loop
