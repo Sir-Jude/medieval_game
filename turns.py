@@ -1,14 +1,8 @@
 # Python imports
-from abc import ABC, abstractmethod
 from time import sleep
-from os import system
 import random
 
 # Custom imports
-import weapons
-import armors
-from characters import Character, character_factory
-import boss
 
 class HeroTurn:
     def __init__(self, fighters):

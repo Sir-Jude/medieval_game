@@ -46,8 +46,6 @@ for fighter in fighters:
 print("\n                           VS\n")
 sleep(1)
 print(enemy)
-# input("\nAre you ready for battle? ")
-# system("clear")
 
 # Arena/battle engine
 battle = True
