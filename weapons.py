@@ -1,11 +1,33 @@
 
-class Weapon: 
-    def __init__(self, name, damage, skill):
+class Weapon:
+    """
+    A class to create weapon objects using a factory.
+    
+    Called from character.py to instantiate a weapon object that will.
+
+    ...
+
+    Attributes
+    ----------
+    name : str
+        the name of the weapon
+    damage : int
+        the amount of damage the weapon has
+    skill : str
+        the skill required to best use the weapon
+
+    Methods
+    -------
+    weapon_factory(weapon)
+        takes in weapon as an argument from character.py 
+        and then instantiates a Weapon object
+    """
+    def __init__(self, name: str, damage: int, skill: str):
         self.name = name
         self.damage = damage
         self.skill = skill
 
-def weapon_factory(weapon):
+def weapon_factory(weapon: str):
     if weapon.lower() == "sword":
         return Weapon("Sword", 10, "close")
     elif weapon.lower() == "axe":
@@ -18,14 +40,17 @@ def weapon_factory(weapon):
         return Weapon("Spear", 20, "distant")
     elif weapon.lower() == "bow":
         return Weapon("Bow", 10, "distant")
-    else:
-        raise ValueError(f"Invalid weapon type: {weapon}")
 
 
 
-# weapon cheat code
-# singleton
 class SuperWeapon(Weapon):
+    """
+    A subclass of Weapon 
+    Singleton Pattern 
+    Is called by character.py
+
+    Creates a special weapon that can be accessed by a cheat code
+    """
     _instance = None
 
     def __new__(cls):

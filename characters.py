@@ -31,26 +31,31 @@ class Character:
             self.name = input("And finally you, how are you known? ").title()
 
     def get_class(self):
-        personality = input(
-            f"""\nAnd what are you, {self.name}?
+        while True: # Error checking loop
+            skill_type = input(
+                f"""\nAnd what are you, {self.name}?
 [1] Warrior
 [2] Magician
 [3] Archer
 [4] Smith
 -> """
         )
-        if personality == "1":
-            self.person = "Warrior"
-            self.skill = "close"
-        elif personality == "2":
-            self.person = "Magician"
-            self.skill = "magic"
-        elif personality == "3":
-            self.person = "Archer"
-            self.skill = "distant"
-        elif personality == "4":
-            self.person = "Smith"
-            self.skill = "close"
+            if skill_type in ["1", "2", "3", "4"]:
+                break
+            else:
+                print("You must enter a number between 1 and 4")
+            if skill_type == "1":
+                self.person = "Warrior"
+                self.skill = "close"
+            elif skill_type == "2":
+                self.person = "Magician"
+                self.skill = "magic"
+            elif skill_type == "3":
+                self.person = "Archer"
+                self.skill = "distant"
+            elif skill_type == "4":
+                self.person = "Smith"
+                self.skill = "close"
 
     def get_weapon(self):
         fighter_weapon = input(
@@ -151,7 +156,10 @@ class Character:
         return defense_power
 
     def __str__(self):
-        return f"{self.name}, a great {self.person}, who will fight with a {self.weapon.name} and a {self.armor.name}.\n- Health Points:   {self.health} \n- Defense  Points: {self.defense_points + self.armor.defense} \n- Attack Points:   {self.attack_points + self.weapon.damage}\n"
+        return f"""{self.name}, a great {self.person}, who will fight with a {self.weapon.name} and a {self.armor.name}.
+    - Health Points:  {self.health}
+    - Defense Points: {self.defense_points + self.armor.defense}
+    - Attack Points:  {self.attack_points + self.weapon.damage}\n"""
 
 
 def character_factory():
