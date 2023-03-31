@@ -6,9 +6,7 @@
 - include a singleton (OPTIONAL)
 - excalidraw presentation, game demo, code review
 
-# pip install python-vlc 
-# pip install playsound
-# sudo apt-get install vlc
+
 
 # Medieval Game 
 
@@ -19,19 +17,31 @@
 - Mathias 
 - Spencer
 
+## Required installs
+```
+pip install python-vlc 
+pip install playsound
+sudo apt-get install vlc
+```
+## Project Presentation
+[Excalidraw Presentation]()
 
 ## Files
-### Game 
+### game 
 Is the main file that executes the game importing the classes from the other files
 
-### Characters
+### characters
 Contains the class Character is where we create our characters
 
-### Weapons
+### weapons
 Contains the class Weapon which is a weapon factory that produces a weapon object.
 
-### Armors
+### armors
 Contains the class Armor which is a armor factory that produces a armor object
 
-### Markus the Beast
+### boss
 Contains the enemy class that we must fight
+
+### turns
+has the turn functions of the Heroes and the Boss
+
