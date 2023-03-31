@@ -83,13 +83,17 @@ while battle == True:
     # Checking if the boss is dead.
     if enemy.health <= 0:
         battle_music.stop()
-        winning = vlc.MediaPlayer("winning.mp3")
-        winning.audio_set_volume(50)
-        winning.play()
         print("\nMarkus the Beast is dead!\nThe heroes has won!")
+        boss_death = vlc.MediaPlayer("boss_death.mp3")
+        boss_death.audio_set_volume(70)
+        boss_death.play()
         input("ENTER ")
         system("clear")
         print(heroes_won)
+        winning = vlc.MediaPlayer("winning.mp3")
+        winning.audio_set_volume(50)
+        winning.play()
+        sleep(5)
         break
 
     print()
