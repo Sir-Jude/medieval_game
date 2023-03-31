@@ -10,8 +10,9 @@ from turns import HeroTurn, BossTurn
 from image import start, heroes_won, game_over
 
 system("clear")
-player = vlc.MediaPlayer("start.mp3")
-player.play()
+start = vlc.MediaPlayer("start.mp3")
+start.audio_set_volume(50)
+start.play()
 print(start)
 input("ENTER ")
 system("clear")
@@ -55,9 +56,10 @@ battle = True
 turn = 0
 print ("\nLet the fighting begin!\n")
 input("ENTER ")
-player.stop()
-player = vlc.MediaPlayer("battle.mp3")
-player.play()
+start.stop()
+battle = vlc.MediaPlayer("battle.mp3")
+battle.audio_set_volume(50)
+battle.play()
 system("clear")
 
 while battle == True:
@@ -80,7 +82,7 @@ while battle == True:
 
     # Checking if the boss is dead.
     if enemy.health <= 0:
-        player.stop()
+        battle.stop()
         print("\nMarkus the Beast is dead!\nThe heroes has won!")
         input("ENTER ")
         system("clear")
@@ -100,15 +102,16 @@ while battle == True:
         print()
     
     if len(fighters) == 0: # Sopping the game if there are no more fighters left
-        player.stop()
+        battle.stop()
         print("\nAll Heroes are dead!\nMarkus the Beast has killed you all!")
         input("ENTER ")
         system("clear")
-        player = vlc.MediaPlayer("game_over.mp3")
-        player.play()
+        game_over = vlc.MediaPlayer("game_over.mp3")
+        game_over.audio_set_volume(50)
+        game_over.play()
         print(game_over)
         input("ENTER ")
-        player.stop()
+        game_over.stop()
         break
     
     input("Are you ready for next turn? ")

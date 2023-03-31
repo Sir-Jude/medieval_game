@@ -6,7 +6,9 @@
 - include a singleton (OPTIONAL)
 - excalidraw presentation, game demo, code review
 
-
+# pip install python-vlc 
+# pip install playsound
+# sudo apt-get install vlc
 
 # Medieval Game 
 
