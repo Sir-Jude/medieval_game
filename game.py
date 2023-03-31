@@ -111,7 +111,7 @@ while battle == True:
         game_over_music.play()
         print(game_over)
         input("ENTER ")
-        game_over.stop()
+        game_over_music.stop()
         break
     
     input("Are you ready for next turn? ")
