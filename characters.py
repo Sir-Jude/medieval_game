@@ -19,7 +19,7 @@ class Character:
         self.weapon = weapon
         self.armor = armor
         self.defense_points = 20
-        self.attack_points = 20
+        self.attack_points = 40
 
     def get_valid_name(self, prompt):
         while True:
