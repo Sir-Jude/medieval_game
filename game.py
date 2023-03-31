@@ -1,6 +1,7 @@
 # Python imports
 from time import sleep
 from os import system
+import vlc
 # Custom imports
 from characters import character_factory
 from boss import FinalBoss
@@ -9,6 +10,8 @@ from turns import HeroTurn, BossTurn
 from image import start, heroes_won, game_over
 
 system("clear")
+player = vlc.MediaPlayer("start.mp3")
+player.play()
 print(start)
 input("ENTER ")
 system("clear")
@@ -50,7 +53,10 @@ print(enemy)
 # Arena/battle engine
 battle = True
 turn = 0
+player.stop()
 print ("\nLet the fighting begin!\n")
+player = vlc.MediaPlayer("battle.mp3")
+player.play()
 input("ENTER ")
 system("clear")
 
@@ -60,7 +66,7 @@ while battle == True:
     print(f"\n   --------------- Round {turn}: ---------------\n")
 
     # Character's turn
-    print("Chose which one will attack Markus:")
+    hero_turn = HeroTurn(fighters)
     for fighter in fighters:
         print(f"[{fighters.index(fighter)+1}] {fighter.name} - {fighter.health}hp")
     while True:
@@ -75,6 +81,7 @@ while battle == True:
 
     # Checking if the boss is dead.
     if enemy.health <= 0:
+        player.stop()
         print("\nMarkus the Beast is dead!\nThe heroes has won!")
         input("ENTER ")
         system("clear")
@@ -83,8 +90,8 @@ while battle == True:
 
     print()
     # Boss turn
-    boss_turn = BossTurn(fighters, enemy)
-    boss_turn.boss_result()
+    boss_turn = BossTurn(fighters)
+    boss_turn.boss_result(fighter.defend(), enemy.attack(), enemy)
 
     # Checking if someone is dead.
     for fighter in fighters:
@@ -94,11 +101,15 @@ while battle == True:
         print()
     
     if len(fighters) == 0: # Sopping the game if there are no more fighters left
+        player.stop()
         print("\nAll Heroes are dead!\nMarkus the Beast has killed you all!")
         input("ENTER ")
         system("clear")
+        player = vlc.MediaPlayer("game_over.mp3")
+        player.play()
         print(game_over)
         input("ENTER ")
+        player.stop()
         break
     
     input("Are you ready for next turn? ")
