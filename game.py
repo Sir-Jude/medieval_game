@@ -11,7 +11,7 @@ from image import start, heroes_won, game_over
 
 system("clear")
 start_music = vlc.MediaPlayer("start.mp3")
-start_music.audio_set_volume(50)
+start_music.audio_set_volume(70)
 start_music.play()
 print(start)
 input("ENTER ")
@@ -39,7 +39,7 @@ for num in range(0, 3):
             print(f"\nWe need one last hero...")
         else:
             print(f"\nWe need {3-len(fighters)} more heroes...")
-
+stop()
 # The list of fighter
 enemy = FinalBoss()
 system("clear")
@@ -57,9 +57,9 @@ turn = 0
 print ("\nLet the fighting begin!\n")
 input("ENTER ")
 start_music.stop()
-battle = vlc.MediaPlayer("battle.mp3")
-battle.audio_set_volume(50)
-battle.play()
+battle_music = vlc.MediaPlayer("battle.mp3")
+battle_music.audio_set_volume(70)
+battle_music.play()
 system("clear")
 
 while battle == True:
@@ -82,7 +82,7 @@ while battle == True:
 
     # Checking if the boss is dead.
     if enemy.health <= 0:
-        battle.stop()
+        battle_music.stop()
         print("\nMarkus the Beast is dead!\nThe heroes has won!")
         input("ENTER ")
         system("clear")
@@ -102,12 +102,12 @@ while battle == True:
         print()
     
     if len(fighters) == 0: # Sopping the game if there are no more fighters left
-        battle.stop()
+        battle_music.stop()
         print("\nAll Heroes are dead!\nMarkus the Beast has killed you all!")
         input("ENTER ")
         system("clear")
         game_over_music = vlc.MediaPlayer("game_over.mp3")
-        game_over_music.audio_set_volume(50)
+        game_over_music.audio_set_volume(70)
         game_over_music.play()
         print(game_over)
         input("ENTER ")
