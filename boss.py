@@ -21,7 +21,7 @@ class FinalBoss:
         # Final boss can restore his health sometimes
         if random.randint(0, 20) == 0:
             self.health += 50
-            print(f"{self.name} has drunken a magical potion and increased his health(+50)!!")
+            print(f"{self.name} has drunk a magical potion and increased his health(+50)!!")
         return defense_power
     
     def __str__(self):
