@@ -24,7 +24,7 @@ pip install playsound
 sudo apt-get install vlc
 ```
 ## Project Presentation
-[Excalidraw Presentation]()
+[Excalidraw Presentation](https://excalidraw.com/#room=213311dbd10e5772dd1d,y1YzzFQSuE8_UaaIbWtO-w)
 
 ## Files
 ### game 

@@ -70,13 +70,17 @@ while battle == True:
     # Character's turn
     for fighter in fighters:
         print(f"[{fighters.index(fighter)+1}] {fighter.name} - {fighter.health}hp")
-    while True:
-        fighter_choice = input("-> ")
-        if fighter_choice != "" and int(fighter_choice) in [i for i in range(1,len(fighters)+1)]:
-            fighter = fighters[int(fighter_choice)-1]
-            break
-        else:
-            print(f"You must enter a number between 1 and {len(fighters)}")
+
+    if len(fighters) > 1:
+        while True:
+            fighter_choice = input("-> ")
+            if fighter_choice != "" and int(fighter_choice) in [i for i in range(1,len(fighters)+1)]:
+                fighter = fighters[int(fighter_choice)-1]
+                break
+            else:
+                print(f"You must enter a number between 1 and {len(fighters)}")
+    else:
+        fighter = fighters[0]
     hero_turn = HeroTurn(fighter, enemy)
     hero_turn.hero_result()
 
