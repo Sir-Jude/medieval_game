@@ -20,8 +20,8 @@ class HeroTurn:
         print(
             f"{enemy.name} the Beast lost {abs(damage)} hp, and now has {enemy.health+damage}hp left."
         )
-        enemy.health = enemy.health + damage
-        sleep(0.5)
+        enemy.health += damage
+        sleep(1)
 
 
 class BossTurn:
@@ -42,4 +42,4 @@ class BossTurn:
         print(
             f"{fighter.name} the {fighter.person} lost {abs(damage)} hp and now has {fighter.health+damage} hp."
         )
-        fighter.health = fighter.health + damage
+        fighter.health += damage
