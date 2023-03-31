@@ -28,14 +28,14 @@ class Armor:
 
 def armor_factory(armor):
     if armor.lower() == "cloak":
-        return Armor("cloak", 5, "magic")
+        return Armor("cloak", 7, "magic")
     elif armor.lower() == "helmet":
         return Armor("helmet", 10, "distant")
     elif armor.lower() == "round shield":
         return Armor("round shield", 15, "close")
     elif armor.lower() == "roman shield":
-        return Armor("roman shield", 20, "close")
+        return Armor("roman shield", 17, "close")
     elif armor.lower() == "leather armor":
         return Armor("leather armor", 15, "distant")
     elif armor.lower() == "metal armor":
-        return Armor("metal armor", 20, "close")
+        return Armor("metal armor", 17, "close")
