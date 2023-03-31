@@ -121,6 +121,9 @@ while battle == True:
         game_over_music.stop()
         break
     
-    input("Are you ready for next turn? ")
+    if len(fighters) == 1:
+        sleep(1.5)
+    else:
+        input("Are you ready for next turn? ")
     system("clear")
     
